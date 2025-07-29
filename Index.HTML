@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elementi di Diritto Penale: Reati contro la Pubblica Amministrazione</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        .section-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .section-content.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .quiz-option:hover {
+            background-color: #e0e7ff;
+        }
+        .quiz-option.selected {
+            background-color: #c7d2fe;
+            border-color: #6366f1;
+        }
+        .quiz-option.correct {
+            background-color: #d1fae5;
+            border-color: #10b981;
+        }
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+        .quiz-option.disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        /* Custom styles for sidebar */
+        #sidebar {
+            width: 256px; /* w-64 */
+            transition: transform 0.3s ease-in-out;
+        }
+        #mainContentWrapper {
+            transition: margin-left 0.3s ease-in-out;
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            #sidebar {
+                transform: translateX(0); /* Always visible on desktop */
+            }
+            #mainContentWrapper {
+                margin-left: 256px; /* Space for sidebar */
+            }
+            #sidebarToggleOpen {
+                display: none !important; /* Hide hamburger on desktop */
+            }
+        }
+    </style>
+</head>
+<body class="antialiased flex">
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full bg-blue-800 text-white p-4 shadow-xl transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-50 overflow-y-auto">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold">Indice</h2>
+            <button id="sidebarToggleClose" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <nav>
+            <ul class="space-y-2 text-sm font-medium">
+                <li><a href="#slide1" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Introduzione</a></li>
+                <li><a href="#slide2" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Diritto Penale</a></li>
+                <li><a href="#slide3" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Pubblica Amministrazione</a></li>
+                <li><a href="#slide4" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Perché Tutelare?</a></li>
+                <li><a href="#slide5" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Classificazione Reati</a></li>
+                <li><a href="#slide6" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Il Pubblico Ufficiale</a></li>
+                <li><a href="#slide7" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">L'Incaricato di Pubblico Servizio</a></li>
+                <li><a href="#slide8" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Esercente Servizio Pubblica Necessità</a></li>
+                <li><a href="#slide9" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Acquisizione/Perdita Qualifica</a></li>
+                <li><a href="#slide10" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Rilevanza Qualifica</a></li>
+                <li><a href="#slide11" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Corruzione</a></li>
+                <li><a href="#slide12" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Corruzione Propria</a></li>
+                <li><a href="#slide13" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Corruzione Impropria</a></li>
+                <li><a href="#slide14" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Corruzione Atti Giudiziari</a></li>
+                <li><a href="#slide15" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Concussione</a></li>
+                <li><a href="#slide16" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Induzione Indebita</a></li>
+                <li><a href="#slide17" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Peculato</a></li>
+                <li><a href="#slide18" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Malversazione</a></li>
+                <li><a href="#slide19" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Indebita Percezione</a></li>
+                <li><a href="#slide20" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Abuso d'Ufficio</a></li>
+                <li><a href="#slide21" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Rivelazione Segreti</a></li>
+                <li><a href="#slide22" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Omissione/Ritardo Atti</a></li>
+                <li><a href="#slide23" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Rifiuto Atti</a></li>
+                <li><a href="#slide24" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Interruzione Servizio Pubblico</a></li>
+                <li><a href="#slide25" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Soppressione Atti Veri</a></li>
+                <li><a href="#slide26" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Falso Ideologico P.U.</a></li>
+                <li><a href="#slide27" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Falsità Materiale P.U.</a></li>
+                <li><a href="#slide28" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Concussione (vecchia form.)</a></li>
+                <li><a href="#slide29" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Turbata Libertà Incanti</a></li>
+                <li><a href="#slide30" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Inadempimento Contratti</a></li>
+                <li><a href="#slide31" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Traffico Influenze Illecite</a></li>
+                <li><a href="#slide32" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Falso Ideologico P.U. (ripresa)</a></li>
+                <li><a href="#slide33" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Falsità Materiale P.U. (ripresa)</a></li>
+                <li><a href="#slide34" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Falsità Scrittura Privata</a></li>
+                <li><a href="#slide35" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Uso di Atto Falso</a></li>
+                <li><a href="#slide36" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Falso e Fede Pubblica</a></li>
+                <li><a href="#slide37" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Truffa Aggravata</a></li>
+                <li><a href="#slide38" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Resistenza P.U.</a></li>
+                <li><a href="#slide39" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Oltraggio P.U.</a></li>
+                <li><a href="#slide40" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Interruzione Servizio Pubblico (ripresa)</a></li>
+                <li><a href="#slide41" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Violenza/Minaccia P.U.</a></li>
+                <li><a href="#slide42" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Millantato Credito (abrogato)</a></li>
+                <li><a href="#slide43" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Circostanze Aggravanti/Attenuanti</a></li>
+                <li><a href="#slide44" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Confisca</a></li>
+                <li><a href="#slide45" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Responsabilità Enti (D.Lgs. 231/2001)</a></li>
+                <li><a href="#slide46" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Misure Preventive Antimafia</a></li>
+                <li><a href="#slide47" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Denuncia e Querela</a></li>
+                <li><a href="#slide48" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Leggi Anticorruzione</a></li>
+                <li><a href="#slide49" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Ruolo dell'ANAC</a></li>
+                <li><a href="#slide50" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Strumenti Internazionali</a></li>
+                <li><a href="#slide51" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Importanza della Legalità</a></li>
+                <li><a href="#slide52" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Domande e Ringraziamenti</a></li>
+                <li><a href="#quiz" class="block py-2 px-3 rounded-md hover:bg-blue-700 transition duration-300">Quiz</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div id="mainContentWrapper" class="flex-1 transition-all duration-300 ease-in-out">
+
+        <!-- Header (now inside main content wrapper) -->
+        <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-lg p-4 sticky top-0 z-40">
+            <div class="container mx-auto flex justify-between items-center">
+                <h1 class="text-2xl font-bold">Elementi di Diritto Penale: I Reati contro la P.A.</h1>
+                <p class="text-lg md:text-xl font-semibold text-[#FFFAFA]">a cura di: Alessandro Azzola - 2025</p>
+                <button id="sidebarToggleOpen" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="container mx-auto p-6 md:p-8">
+
+            <!-- Slide 1: Titolo e Benvenuto -->
+            <section id="slide1" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Elementi di Diritto Penale: I Reati contro la Pubblica Amministrazione</h2>
+                <h3 class="text-xl text-gray-700 mb-6">Comprendere la tutela penale dell'integrità della P.A.</h3>
+                <p class="text-gray-600 leading-relaxed">"Buonasera a tutti e benvenuti a questa lezione dedicata agli <span class="font-medium text-blue-600">Elementi di Diritto Penale</span> e, in particolare, ai <span class="font-medium text-blue-600">Reati contro la Pubblica Amministrazione</span>. Il nostro obiettivo oggi è esplorare come il sistema penale italiano tuteli l'integrità, l'imparzialità e il buon andamento della nostra Pubblica Amministrazione. Comprendere questi meccanismi è fondamentale non solo per gli addetti ai lavori, ma per ogni cittadino, poiché la buona amministrazione è un pilastro della nostra democrazia. Nelle prossime slide, analizzeremo le figure chiave, i reati più rilevanti, e le strategie di contrasto a fenomeni come la corruzione. Partiamo subito!"</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/e0e7ff/3f51b5?text=Benvenuto+e+Giustizia" alt="Infografica: Benvenuto e Giustizia" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 2: Cos'è il Diritto Penale? -->
+            <section id="slide2" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Cos'è il Diritto Penale?</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Branca del diritto che disciplina i reati e le relative sanzioni.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Principi Fondamentali:</span> Legalità, materialità, offensività, colpevolezza.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Rif. Normativi:</span> Art. 25 Cost., Art. 1 c.p.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Iniziamo dalle basi: cos'è il <span class="font-medium text-blue-600">Diritto Penale</span>? È quella branca del diritto pubblico che stabilisce quali comportamenti sono considerati reati e quali sono le conseguenze giuridiche per chi li commette, ovvero le sanzioni, come la pena detentiva o pecuniaria. Si fonda su principi cardine: il più importante è il <span class="font-medium text-blue-600">principio di legalità</span>, sancito dall'Articolo 25 della Costituzione e dall'Articolo 1 del Codice Penale. Questo significa che nessuno può essere punito per un fatto che non sia espressamente previsto come reato da una legge. Non può esserci 'nulla poena sine lege', cioè nessuna pena senza legge. Pensate, ad esempio, se un comportamento, oggi non reato, venisse considerato tale domani: non potremmo essere perseguiti per ciò che abbiamo fatto ieri, prima che la legge entrasse in vigore. Altri principi fondamentali sono la <span class="font-medium text-blue-600">materialità</span> del fatto (serve un comportamento concreto), l'<span class="font-medium text-blue-600">offensività</span> (il reato deve ledere o mettere in pericolo un bene giuridico), e la <span class="font-medium text-blue-600">colpevolezza</span> (non basta aver commesso il fatto, ma deve esserci un elemento psicologico come dolo o colpa). Il Diritto Penale, in sintesi, è uno strumento essenziale per la tutela della società."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffe0b2/e65100?text=Principi+Diritto+Penale" alt="Infografica: Principi Fondamentali del Diritto Penale" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 3: Ruolo e Funzioni della Pubblica Amministrazione -->
+            <section id="slide3" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Ruolo e Funzioni della Pubblica Amministrazione</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Enti che perseguono fini di interesse pubblico (Art. 97 Cost., D.Lgs. 165/2001).</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Principi:</span> Imparzialità, buon andamento, trasparenza, legalità.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Importanza:</span> Al servizio della collettività.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Passiamo ora all'altro attore fondamentale della nostra discussione: la <span class="font-medium text-blue-600">Pubblica Amministrazione</span>, spesso abbreviata in P.A. Non si tratta di un singolo ente, ma di un vasto insieme di organizzazioni, come Comuni, Regioni, Ministeri, ospedali pubblici, scuole, che hanno un compito comune: perseguire gli interessi della collettività. L'Articolo 97 della Costituzione ne delinea i principi fondamentali: la P.A. deve agire con <span class="font-medium text-blue-600">imparzialità</span> e <span class="font-medium text-blue-600">buon andamento</span>. Questo significa che deve trattare tutti i cittadini allo stesso modo e operare in modo efficiente e produttivo. Pensate, ad esempio, a un Comune che eroga servizi ai cittadini, o a un ospedale pubblico che garantisce l'assistenza sanitaria. La P.A. è il motore che permette alla nostra società di funzionare, erogando servizi essenziali, gestendo le risorse pubbliche e garantendo i diritti dei cittadini. La sua importanza è dunque cruciale per il benessere e la coesione sociale."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/d1c4e9/5e35b1?text=Funzioni+P.A." alt="Infografica: Funzioni e Struttura della Pubblica Amministrazione" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 4: Perché tutelare penalmente la P.A.? -->
+            <section id="slide4" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Perché tutelare penalmente la P.A.?</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Beni Giuridici Tutelati:</span> Imparzialità, buon andamento, prestigio, efficienza, trasparenza, correttezza.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Fiducia dei Cittadini:</span> Pilastro della democrazia.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "A questo punto, sorge spontanea una domanda: perché è così importante che il Diritto Penale intervenga a tutelare la Pubblica Amministrazione? La risposta sta nei <span class="font-medium text-blue-600">beni giuridici</span> che vengono protetti. Non si tratta solo di difendere il patrimonio pubblico, ma soprattutto principi immateriali come l'<span class="font-medium text-blue-600">imparzialità</span>, ovvero l'assenza di favoritismi; il <span class="font-medium text-blue-600">buon andamento</span>, che si traduce nell'efficienza e nell'efficacia dell'azione amministrativa; il <span class="font-medium text-blue-600">prestigio</span> delle istituzioni; la <span class="font-medium text-blue-600">trasparenza</span> e la <span class="font-medium text-blue-600">correttezza</span> dei comportamenti. Quando questi principi vengono lesi da condotte illecite, la conseguenza più grave è la perdita di <span class="font-medium text-blue-600">fiducia</span> da parte dei cittadini nelle istituzioni. La corruzione, ad esempio, non è solo un furto di risorse, ma mina le fondamenta della democrazia, distorcendo il libero mercato, allontanando gli investimenti e alimentando la sfiducia. La tutela penale, quindi, serve a garantire che la P.A. possa operare nel pieno rispetto della legge e nell'esclusivo interesse della collettività."</p>
+                <div class="mt-6">
+                    <canvas id="beniGiuridiciChart" class="max-w-xl mx-auto"></canvas>
+                </div>
+            </section>
+
+            <!-- Slide 5: Classificazione dei Reati contro la P.A. -->
+            <section id="slide5" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Classificazione dei Reati contro la P.A.</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Distinzione:</span> Reati commessi da P.U./IPS; Reati commessi da privati.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Per facilitare la comprensione, possiamo classificare i <span class="font-medium text-blue-600">Reati contro la Pubblica Amministrazione</span> in due grandi categorie, anche se, come vedremo, ci sono intersezioni e complessità. La prima categoria riguarda i <span class="font-medium text-blue-600">reati commessi da pubblici ufficiali o incaricati di pubblico servizio</span>. Questi sono i soggetti che, per la loro posizione, hanno poteri o responsabilità specifiche all'interno della P.A. Pensiamo ai reati di corruzione o peculato. La seconda categoria comprende i <span class="font-medium text-blue-600">reati commessi da privati contro la P.A.</span>, dove è il cittadino a ledere l'interesse pubblico, come nel caso della resistenza a pubblico ufficiale o di false dichiarazioni. Questa distinzione è cruciale perché spesso la qualifica del soggetto attivo, ovvero di chi commette il reato, determina la configurazione stessa del reato e le relative pene. Ogni gruppo di reati, inoltre, è volto a tutelare specifici beni giuridici, che esamineremo in dettaglio. Questa classificazione ci aiuterà a navigare tra le diverse fattispecie che andremo ad analizzare."</p>
+                <div class="mt-6">
+                    <canvas id="classificazioneReatiChart" class="max-w-xl mx-auto"></canvas>
+                </div>
+            </section>
+
+            <!-- Slide 6: Il Pubblico Ufficiale (Art. 357 c.p.) -->
+            <section id="slide6" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Il Pubblico Ufficiale (Art. 357 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Chi esercita funzioni legislative, giudiziarie o amministrative (pubblica funzione).</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Criterio:</span> Esercizio di poteri autoritativi e certificativi.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Rif. Normativi:</span> Art. 357 c.p.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Entriamo nel vivo analizzando i soggetti che possono commettere o subire questi reati. La figura centrale è il <span class="font-medium text-blue-600">Pubblico Ufficiale</span>, la cui definizione è fornita dall'Articolo 357 del Codice Penale. Non è semplicemente chi lavora per lo Stato, ma chi esercita una 'pubblica funzione', che può essere di natura legislativa, come un parlamentare; giudiziaria, come un giudice o un pubblico ministero; o amministrativa. È quest'ultima la più complessa. Il criterio fondamentale per riconoscere un Pubblico Ufficiale, ai fini penali, è l'esercizio di <span class="font-medium text-blue-600">poteri autoritativi</span> o <span class="font-medium text-blue-600">certificativi</span>. Un potere autoritativo è la capacità di emanare atti che incidono unilateralmente sulla sfera giuridica dei privati, come un agente di polizia che impone una multa. Un potere certificativo è la capacità di dare fede pubblica a fatti o dichiarazioni, come un notaio che certifica un atto, o un ufficiale di stato civile che rilascia un certificato. Un carabiniere, un assessore comunale, un giudice sono tutti pubblici ufficiali in quanto esercitano poteri di questo tipo."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/b2dfdb/00796b?text=Ruolo+Pubblico+Ufficiale" alt="Infografica: Ruolo e Poteri del Pubblico Ufficiale" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 7: L'Incaricato di Pubblico Servizio (Art. 358 c.p.) -->
+            <section id="slide7" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">L'Incaricato di Pubblico Servizio (Art. 358 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Chi svolge pubblico servizio, ma senza poteri autoritativi o certificativi.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Differenze:</span> Con il Pubblico Ufficiale.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Rif. Normativi:</span> Art. 358 c.p.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Accanto al Pubblico Ufficiale, troviamo l'<span class="font-medium text-blue-600">Incaricato di Pubblico Servizio</span>, definito dall'Articolo 358 del Codice Penale. Questa figura svolge un 'pubblico servizio', ma la differenza cruciale rispetto al Pubblico Ufficiale è che non ha né poteri autoritativi, né poteri certificativi. Le sue mansioni sono considerate 'accessorie' o 'complementari' rispetto alla funzione pubblica vera e propria. Pensate a un <span class="font-medium text-blue-600">infermiere</span> in un ospedale pubblico: svolge un servizio di fondamentale importanza per la collettività, ma non ha il potere di emanare provvedimenti che incidano sui diritti altrui, né di dare fede pubblica a un atto. Un <span class="font-medium text-blue-600">usciere</span> in un Ministero o un <span class="font-medium text-blue-600">addetto alla segreteria</span> di una scuola pubblica rientrano in questa categoria. Sono figure che operano all'interno della Pubblica Amministrazione, ma senza quella 'potestà' tipica del Pubblico Ufficiale. Capire questa distinzione è fondamentale perché le pene per i reati commessi da un Incaricato di Pubblico Servizio sono spesso diverse, e in genere meno severe, rispetto a quelle previste per un Pubblico Ufficiale."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/c8e6c9/2e7d32?text=Incaricato+Servizio+Pubblico" alt="Infografica: Caratteristiche dell'Incaricato di Pubblico Servizio" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 8: Esercente un Servizio di Pubblica Necessità (Art. 359 c.p.) -->
+            <section id="slide8" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Esercente un Servizio di Pubblica Necessità (Art. 359 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Privati che esercitano professioni vincolate.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Differenza:</span> Con P.U. e IPS.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Rif. Normativi:</span> Art. 359 c.p.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "L'Articolo 359 del Codice Penale ci introduce a una terza categoria di soggetti, che pur non essendo pubblici ufficiali o incaricati di pubblico servizio in senso stretto, assumono una rilevanza penale per i reati contro la P.A.: gli <span class="font-medium text-blue-600">Esercenti un Servizio di Pubblica Necessità</span>. Si tratta di soggetti privati che svolgono attività professionali o di servizio che, per legge o per loro natura, sono essenziali per la collettività e sono spesso soggette a controlli o autorizzazioni pubbliche. Pensate a un <span class="font-medium text-blue-600">avvocato</span>: pur essendo un libero professionista, la sua attività è di pubblica necessità perché garantisce il diritto di difesa. Un <span class="font-medium text-blue-600">medico privato</span> o un <span class="font-medium text-blue-600">farmacista</span> rientrano in questa categoria. La differenza cruciale è che non sono inseriti nell'organizzazione diretta della Pubblica Amministrazione, ma la loro attività è così rilevante per la collettività da giustificare in alcuni casi una particolare tutela penale in relazione ai rapporti con il pubblico. Anche se per molti reati non sono equiparati a P.U. o IPS, è importante conoscerli per il contesto generale."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffcdd2/c62828?text=Professioni+Necessità" alt="Infografica: Esempi di Esercenti un Servizio di Pubblica Necessità" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 9: La Qualifica Soggettiva: Momento di Acquisizione e Perdita -->
+            <section id="slide9" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">La Qualifica Soggettiva: Momento di Acquisizione e Perdita</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Acquisizione:</span> Nomina, elezione, delega.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Perdita:</span> Cessazione dall'ufficio, sospensione.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Un aspetto fondamentale per la corretta applicazione dei reati contro la Pubblica Amministrazione è la <span class="font-medium text-blue-600">qualifica soggettiva</span> del soggetto: quando un individuo acquisisce o perde la veste di Pubblico Ufficiale o Incaricato di Pubblico Servizio? La qualifica si acquisisce generalmente con la <span class="font-medium text-blue-600">nomina</span>, l'<span class="font-medium text-blue-600">elezione</span> o la <span class="font-medium text-blue-600">delegazione</span> formale che attribuisce all'individuo poteri e funzioni specifiche. Ad esempio, un consigliere comunale acquisisce la qualifica al momento della sua elezione e insediamento. La si perde, invece, con la <span class="font-medium text-blue-600">cessazione dall'ufficio</span> – per dimissioni, scadenza del mandato, licenziamento – o con una <span class="font-medium text-blue-600">sospensione</span> formale dall'esercizio delle funzioni. Un punto cruciale, su cui spesso si creano dibattiti, è l'<span class="font-medium text-blue-600">irrilevanza di un'eventuale illegittimità della nomina</span>. Se una persona è stata nominata in modo viziato, ma sta effettivamente esercitando le funzioni di P.U. o IPS, per il diritto penale è comunque considerata tale al momento del fatto. Ciò che conta, quindi, è l'effettivo esercizio delle funzioni al momento in cui viene commesso il reato, non la regolarità formale della posizione."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/bbdefb/1a237e?text=Ciclo+Vita+Qualifica" alt="Infografica: Acquisizione e Perdita della Qualifica Soggettiva" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 10: Rilevanza della Qualifica per i Reati -->
+            <section id="slide10" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Rilevanza della Qualifica per i Reati</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Reati Propri:</span> Richiedono specifica qualifica (es. peculato).</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Reati Comuni:</span> Commettibili da chiunque (es. furto).</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Concorso di Persone:</span> Art. 110 c.p.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Abbiamo parlato delle diverse qualifiche, ma perché sono così importanti? La risposta è che la qualifica soggettiva determina se un reato è classificato come <span class="font-medium text-blue-600">reato proprio</span> o <span class="font-medium text-blue-600">reato comune</span>. I <span class="font-medium text-blue-600">reati propri</span> sono quelli che possono essere commessi solo da persone che rivestono una specifica qualifica, come il Pubblico Ufficiale o l'Incaricato di Pubblico Servizio. Pensiamo al <span class="font-medium text-blue-600">peculato</span>: solo un P.U. o un IPS può appropriarsi di denaro pubblico di cui ha la disponibilità per ragioni d'ufficio. Un semplice cittadino che ruba un computer da un ufficio pubblico commette un furto, che è un <span class="font-medium text-blue-600">reato comune</span>, non peculato. Tuttavia, è fondamentale considerare anche il <span class="font-medium text-blue-600">concorso di persone nel reato</span>, disciplinato dall'Articolo 110 del Codice Penale. Questo significa che anche un privato può essere chiamato a rispondere di un reato proprio di un P.U. se concorre alla sua realizzazione. Ad esempio, un imprenditore che offre denaro a un funzionario pubblico per ottenere un favore, concorre nel reato di corruzione. La qualifica, quindi, non è solo un dettaglio, ma un elemento essenziale che definisce la fattispecie di reato e le conseguenze giuridiche."</p>
+                <div class="mt-6">
+                    <canvas id="rilevanzaQualificaChart" class="max-w-xl mx-auto"></canvas>
+                </div>
+            </section>
+
+            <!-- Slide 11: Corruzione: Art. 318-322 ter c.p. -->
+            <section id="slide11" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Corruzione: Art. 318-322 ter c.p.</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Introduzione:</span> Il fenomeno corruttivo.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Beni Giuridici Tutelati:</span> Imparzialità e buon andamento della P.A.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Iniziamo ad addentrarci nei reati specifici, partendo da uno dei fenomeni più insidiosi e dannosi per la Pubblica Amministrazione: la <span class="font-medium text-blue-600">Corruzione</span>. Il nostro Codice Penale la disciplina in un blocco di articoli che vanno dal 318 al 322-ter, coprendo diverse sfaccettature di questo illecito. La corruzione, in termini semplici, è lo scambio illecito tra un pubblico funzionario e un privato, dove il primo riceve un vantaggio (denaro o altro) in cambio di un atto o un'omissione legata alla sua funzione. I <span class="font-medium text-blue-600">beni giuridici</span> che vengono primariamente tutelati sono l'<span class="font-medium text-blue-600">imparzialità</span> e il <span class="font-medium text-blue-600">buon andamento della Pubblica Amministrazione</span>. La corruzione, infatti, mina la fiducia dei cittadini nelle istituzioni, distorce la concorrenza, e può portare a decisioni che non sono nell'interesse pubblico, ma in quello del corrotto o del corruttore. È una vera e propria 'patologia' del sistema che compromette l'efficienza e l'equità delle nostre istituzioni."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/f8bbd0/ad1457?text=Impatto+Corruzione" alt="Infografica: Impatto della Corruzione sulla P.A." class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 12: Corruzione Propria (Art. 319 c.p.) -->
+            <section id="slide12" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Corruzione Propria (Art. 319 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> P.U./IPS riceve/accetta promessa per compiere atto <span class="font-medium text-red-600">contrario</span> ai doveri d'ufficio.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Elementi:</span> Promessa/dazione indebita, atto contrario ai doveri.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Pena:</span> Reclusione.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "La <span class="font-medium text-blue-600">Corruzione Propria</span>, disciplinata dall'Articolo 319 del Codice Penale, è la forma più grave di corruzione. Si verifica quando un Pubblico Ufficiale o un Incaricato di Pubblico Servizio riceve o accetta la promessa di denaro o di un'altra utilità per compiere un atto che è <span class="font-medium text-red-600">contrario ai suoi doveri d'ufficio</span> o per omettere un atto dovuto. L'elemento chiave qui è la 'vendita' della funzione pubblica per un comportamento illecito. Pensate a un <span class="font-medium text-blue-600">funzionario comunale che accetta una somma di denaro da un costruttore</span> per rilasciare un permesso di costruire in violazione delle normative urbanistiche, o per assegnare un appalto a un'impresa che non avrebbe i requisiti. In questi casi, il funzionario tradisce il suo ruolo agendo contro gli interessi pubblici. La pena prevista è la reclusione, e la gravità di questo reato è proporzionale al danno che provoca all'integrità e al corretto funzionamento della Pubblica Amministrazione."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ef9a9a/d32f2f?text=Corruzione+Propria" alt="Infografica: Esempio di Corruzione Propria" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 13: Corruzione Impropria (Art. 318 c.p.) -->
+            <section id="slide13" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Corruzione Impropria (Art. 318 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> P.U./IPS riceve/accetta promessa per compiere atto <span class="font-medium text-green-600">conforme</span> ai doveri d'ufficio.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Elementi:</span> Promessa/dazione indebita, atto conforme ai doveri.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Dopo aver analizzato la corruzione propria, vediamo ora la <span class="font-medium text-blue-600">Corruzione Impropria</span>, regolata dall'Articolo 318 del Codice Penale. La differenza fondamentale sta nel tipo di atto che il Pubblico Ufficiale o l'Incaricato di Pubblico Servizio si impegna a compiere. Nella corruzione impropria, il denaro o l'utilità vengono dati o promessi per un atto che è <span class="font-medium text-green-600">conforme ai doveri d'ufficio</span> del pubblico funzionario. In altre parole, l'atto è un qualcosa che il funzionario dovrebbe comunque fare, perché rientra nelle sue normali mansioni e doveri. Un esempio classico potrebbe essere un <span class="font-medium text-blue-600">cittadino che paga un impiegato comunale</span> per ottenere un certificato o un documento che gli spetta di diritto, ma desidera ottenerlo in tempi molto più brevi rispetto alla normale prassi, magari scavalcando la fila o le normali procedure. Non c'è la 'vendita' di una funzione per un atto illecito, ma l'ottenimento di un vantaggio indebito (come la celerità) in cambio di un 'regalo'. Anche se l'atto in sé non è contrario ai doveri, la ricezione del compenso mina l'imparzialità e la trasparenza della Pubblica Amministrazione, per questo è considerata un reato. È una gratificazione illecita per un atto che è formalmente dovuto, ma per cui si cerca un trattamento di favore."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/c5e1a5/558b2f?text=Corruzione+Impropria" alt="Infografica: Esempio di Corruzione Impropria" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 14: Corruzione in Atti Giudiziari (Art. 319 ter c.p.) -->
+            <section id="slide14" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Corruzione in Atti Giudiziari (Art. 319 ter c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Specificità:</span> Corruzione per favorire/danneggiare una parte in un processo civile/penale/amministrativo.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Pena:</span> Aggravata rispetto alla corruzione ordinaria.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Un tipo di corruzione con una gravità particolare è la <span class="font-medium text-blue-600">Corruzione in Atti Giudiziari</span>, prevista dall'Articolo 319-ter del Codice Penale. Questo reato si configura quando la corruzione è finalizzata a influenzare l'esito di un processo o di un procedimento, che sia civile, penale o amministrativo. L'obiettivo è favorire o danneggiare una delle parti coinvolte. I soggetti attivi tipici sono i Pubblici Ufficiali che operano nell'ambito della giustizia, come <span class="font-medium text-blue-600">giudici</span>, <span class="font-medium text-blue-600">pubblici ministeri</span>, o anche <span class="font-medium text-blue-600">personale amministrativo dei tribunali</span> che possa incidere sull'iter processuale. L'esempio più lampante è quello di un <span class="font-medium text-blue-600">avvocato o una parte in causa che corrompe un giudice</span> per ottenere una sentenza a proprio favore, o per ritardare un processo in modo indebito. La pena per questo tipo di corruzione è notevolmente più severa rispetto alla corruzione ordinaria, perché la corruzione in atti giudiziari non lede solo il buon andamento della P.A., ma mina direttamente uno dei pilastri fondamentali dello Stato di Diritto: la giustizia. La fiducia nell'imparzialità dei tribunali è un valore inestimabile, e la sua compromissione è considerata estremamente grave."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffccbc/bf360c?text=Corruzione+Giudiziaria" alt="Infografica: Corruzione in Atti Giudiziari e la Bilancia della Giustizia" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 15: Concussione (Art. 317 c.p.) -->
+            <section id="slide15" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Concussione (Art. 317 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Abuso della qualità o poteri per <span class="font-medium text-red-600">costringere/indurre</span> a dare/promettere denaro/utilità.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Differenza Cruciale:</span> Vittima è il privato (soggetto passivo) estorto, non solo la P.A.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Passiamo ora a un reato che, sebbene spesso confuso con la corruzione, presenta differenze sostanziali: la <span class="font-medium text-blue-600">Concussione</span>, disciplinata dall'Articolo 317 del Codice Penale. Qui, un Pubblico Ufficiale o un Incaricato di Pubblico Servizio, abusando della sua qualità o dei suoi poteri, <span class="font-medium text-red-600">costringe</span> o <span class="font-medium text-red-600">induce</span> qualcuno a dare o promettere indebitamente denaro o altre utilità. La differenza fondamentale con la corruzione sta nel ruolo del privato: nella corruzione il privato è 'corruttore', nella concussione il privato è la <span class="font-medium text-blue-600">vittima</span>, il soggetto passivo che subisce un'estorsione da parte del pubblico funzionario. Un esempio classico è quello del <span class="font-medium text-blue-600">vigile urbano che, pur in assenza di violazioni, minaccia un automobilista di fargli una multa salata</span> se non gli dà una somma di denaro. Qui il privato è posto in una posizione di soggezione, spinto dalla minaccia o dall'abuso di potere del pubblico funzionario a cedere qualcosa che non dovrebbe. La concussione, quindi, non è un 'accordo' tra due parti, ma un'imposizione dall'alto, che sfrutta la posizione di superiorità del pubblico agente per un arricchimento personale illecito."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffeb3b/fbc02d?text=Concussione+e+Vittima" alt="Infografica: Dinamica della Concussione e Ruolo della Vittima" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 16: Induzione Indebita a Dare o Promettere Utilità (Art. 319 quater c.p.) -->
+            <section id="slide16" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Induzione Indebita a Dare o Promettere Utilità (Art. 319 quater c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Introduzione:</span> Creato con la Legge Severino (2012) per colmare lacune.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Differenza:</span> Concussione (costrizione) vs. Induzione (persuasione).</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Con la <span class="font-medium text-blue-600">Legge Severino del 2012</span>, è stato introdotto un nuovo reato, l'<span class="font-medium text-blue-600">Induzione Indebita a Dare o Promettere Utilità</span>, previsto dall'Articolo 319-quater del Codice Penale. Questo reato è nato per colmare una zona grigia tra la concussione e la corruzione. A differenza della concussione, dove c'è una vera e propria 'costrizione' o 'minaccia' da parte del Pubblico Ufficiale, qui l'azione del funzionario è di <span class="font-medium text-blue-600">induzione</span>, ovvero una persuasione meno violenta, più subdola, che però sfrutta comunque la sua posizione di potere. Il privato, pur non essendo 'costretto', non è del tutto libero di scegliere, ma si sente 'spinto' a dare o promettere qualcosa per ottenere un vantaggio o evitare un danno. Un esempio potrebbe essere un <span class="font-medium text-blue-600">funzionario che 'suggerisce' velatamente a un imprenditore di effettuare una donazione a un'associazione</span> a lui collegata, lasciando intendere che questo potrebbe favorirlo nell'ottenimento di un permesso. Non c'è una minaccia esplicita, ma un'implicita promessa di un vantaggio o l'evitamento di un ostacolo. Questo reato riconosce che anche l'induzione, sebbene meno grave della costrizione, lede comunque la trasparenza e l'imparzialità della Pubblica Amministrazione, e il privato, pur 'indotto', è considerato anch'esso corresponsabile."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffcc80/e65100?text=Induzione+Indebita" alt="Infografica: Dinamica dell'Induzione Indebita" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 17: Peculato (Art. 314 c.p.) -->
+            <section id="slide17" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Peculato (Art. 314 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Appropriazione di denaro/cose mobili altrui di cui si ha disponibilità per ragioni d'ufficio.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Elementi:</span> Qualifica P.U./IPS, possesso per ragioni d'ufficio/servizio, appropriazione.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Analizziamo ora un altro reato tipico dei pubblici funzionari: il <span class="font-medium text-blue-600">Peculato</span>, previsto dall'Articolo 314 del Codice Penale. Questo reato si configura quando un Pubblico Ufficiale o un Incaricato di Pubblico Servizio, avendo la disponibilità di denaro o altre cose mobili a causa del suo ufficio o servizio, se ne <span class="font-medium text-blue-600">appropria</span>. L'elemento chiave è proprio questa 'appropriazione', cioè il P.U. si comporta come se fosse il proprietario di quei beni, distraendoli dalla loro destinazione pubblica per un uso personale. Pensiamo all'<span class="font-medium text-blue-600">impiegato comunale che prende le risme di carta o le cartucce della stampante dell'ufficio per usarle a casa</span>, oppure al <span class="font-medium text-blue-600">tesoriere di un ente pubblico che preleva fondi</span> dalle casse dell'ente per fini personali. La 'disponibilità' non significa necessariamente che ne sia il proprietario, ma che ha la possibilità di gestirli o controllarli in virtù del suo ruolo. È un reato che colpisce direttamente il patrimonio della Pubblica Amministrazione, ma anche la fiducia e la correttezza che dovrebbero improntare il comportamento dei pubblici funzionari. Negli anni è stata anche introdotta la fattispecie del <span class="font-medium text-blue-600">Peculato d'Uso</span>, che prevede una pena ridotta se l'uso illecito è momentaneo e la cosa viene restituita immediatamente."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/b2ebf2/006064?text=Esempio+Peculato" alt="Infografica: Esempio di Peculato" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 18: Malversazione a Danno dello Stato (Art. 316 bis c.p.) -->
+            <section id="slide18" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Malversazione a Danno dello Stato (Art. 316 bis c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Distrazione di denaro/finanziamenti pubblici per fini diversi da quelli per cui erogati.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Soggetti:</span> Chiunque riceva contributi pubblici per specifiche finalità.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Strettamente collegato al peculato, ma con delle differenze importanti, è il reato di <span class="font-medium text-blue-600">Malversazione a Danno dello Stato o di un Ente Pubblico</span>, disciplinato dall'Articolo 316-bis del Codice Penale. Questo reato non riguarda solo i pubblici ufficiali, ma <span class="font-medium text-blue-600">chiunque riceva da un ente pubblico contributi, sovvenzioni, finanziamenti</span> destinati a una specifica finalità e li utilizzi per scopi diversi. La differenza con il peculato sta nel fatto che nel peculato c'è un'appropriazione, cioè il bene viene sottratto alla disponibilità dell'ente e incorporato nel patrimonio del reo; nella malversazione, invece, c'è una <span class="font-medium text-blue-600">'distrazione'</span>, ovvero il denaro o i fondi vengono comunque spesi, ma per fini diversi da quelli per cui erano stati concessi. Immaginate un'<span class="font-medium text-blue-600">associazione che riceve un finanziamento pubblico per realizzare un progetto sociale specifico</span> (es. corsi di formazione per disoccupati), ma invece utilizza gran parte di quei fondi per organizzare una festa privata per i soci o per acquistare beni non attinenti al progetto. Questo reato tutela la corretta destinazione delle risorse pubbliche, assicurando che i fondi vengano impiegati esattamente per lo scopo di interesse generale per cui sono stati stanziati."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffcdd2/b71c1c?text=Distrazione+Fondi" alt="Infografica: Distrazione di Fondi Pubblici" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 19: Indebita Percezione di Erogazioni (Art. 316 ter c.p.) -->
+            <section id="slide19" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Indebita Percezione di Erogazioni (Art. 316 ter c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Ottenere indebitamente finanziamenti/contributi pubblici.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Condotta:</span> Mediante dichiarazioni/documenti falsi o omissione di informazioni.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Un reato che completa il quadro sulla tutela dei fondi pubblici è l'<span class="font-medium text-blue-600">Indebita Percezione di Erogazioni a Danno dello Stato o di un Ente Pubblico</span>, disciplinato dall'Articolo 316-ter del Codice Penale. Questo reato punisce chiunque ottenga, indebitamente, contributi, finanziamenti, mutui agevolati o altre erogazioni di questo tipo dallo Stato, dalle Regioni, da altri enti pubblici o dall'Unione Europea, mediante l'utilizzo o la presentazione di <span class="font-medium text-blue-600">dichiarazioni o documenti falsi o attestanti cose non vere</span>, oppure mediante l'<span class="font-medium text-blue-600">omissione di informazioni dovute</span>. La differenza fondamentale con la truffa aggravata per il conseguimento di erogazioni pubbliche (Art. 640-bis c.p.) sta nel fatto che per l'indebita percezione non è necessaria la 'messa in scena' o l'artificio/raggiro tipico della truffa; basta la semplice presentazione di un documento falso o una dichiarazione non veritiera per ottenere il vantaggio. Un esempio è un'<span class="font-medium text-blue-600">azienda che presenta bilanci falsificati per ottenere un finanziamento agevolato</span> per cui non avrebbe i requisiti. Questo reato mira a garantire la corretta destinazione e l'equo accesso ai fondi pubblici, evitando che vengano sottratti mediante frodi documentali."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/fff9c4/fbc02d?text=Fondi+Ottenuti+Indebitamente" alt="Infografica: Percorso dei Fondi Ottenuti Indebitamente" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 20: Abuso d'Ufficio (Art. 323 c.p.) -->
+            <section id="slide20" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Abuso d'Ufficio (Art. 323 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> P.U./IPS, abusando poteri, procura ingiusto vantaggio patrimoniale/danno ingiusto.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Elementi:</span> Abuso, violazione di norme di legge/regolamento, ingiusto vantaggio/danno.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Proseguiamo con l'<span class="font-medium text-blue-600">Abuso d'Ufficio</span>, un reato di grande attualità e spesso al centro del dibattito pubblico, disciplinato dall'Articolo 323 del Codice Penale. Questo reato si configura quando un Pubblico Ufficiale o un Incaricato di Pubblico Servizio, abusando dei suoi poteri, intenzionalmente procura a sé o ad altri un <span class="font-medium text-blue-600">ingiusto vantaggio patrimoniale</span> o causa un <span class="font-medium text-blue-600">danno ingiusto</span> a qualcun altro. La condotta deve avvenire attraverso la <span class="font-medium text-blue-600">violazione di specifiche norme di legge o di regolamento</span>. Ciò che rende questo reato complesso è il sottile confine con la semplice illegittimità amministrativa. Non basta che l'atto sia illegittimo; deve esserci un abuso di potere finalizzato a un vantaggio o a un danno ingiusto, e deve essere violata una norma precisa. Un esempio tipico è un <span class="font-medium text-blue-600">dirigente comunale che affida un incarico professionale a un suo parente o amico</span>, pur sapendo che questi non ha i requisiti, o che ci sarebbero altri candidati più qualificati, violando chiaramente le normative sui concorsi o sull'affidamento degli incarichi. L'abuso d'ufficio tutela l'imparzialità e la correttezza dell'azione amministrativa, cercando di impedire che la funzione pubblica venga deviata per interessi personali o di parte."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/cfd8dc/455a64?text=Abuso+Potere" alt="Infografica: Esempio di Abuso d'Ufficio" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 21: Rivelazione di Segreti d'Ufficio (Art. 326 c.p.) -->
+            <section id="slide21" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Rivelazione di Segreti d'Ufficio (Art. 326 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Rivelazione di notizie segrete apprese per ragioni d'ufficio.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Beni Giuridici:</span> Riservatezza, buon andamento, sicurezza pubblica.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Il reato di <span class="font-medium text-blue-600">Rivelazione di Segreti d'Ufficio</span>, previsto dall'Articolo 326 del Codice Penale, tutela la riservatezza e la segretezza delle informazioni che transitano nella Pubblica Amministrazione. Si configura quando un Pubblico Ufficiale o un Incaricato di Pubblico Servizio rivela, senza giustificata causa, <span class="font-medium text-blue-600">notizie di cui è venuto a conoscenza a causa del suo ufficio o servizio, e che devono rimanere segrete</span>. Oppure, anche senza rivelarle, le impiega a proprio o altrui profitto. Il bene giuridico tutelato è l'interesse della Pubblica Amministrazione alla riservatezza di determinate informazioni, fondamentale per il buon funzionamento dell'attività amministrativa e, in alcuni casi, per la sicurezza dello Stato o l'ordine pubblico. Immaginate un <span class="font-medium text-blue-600">agente di polizia che rivela a un amico dettagli di un'indagine in corso</span> ancora coperta da segreto istruttorio, o un <span class="font-medium text-blue-600">impiegato della Motorizzazione Civile che fornisce a un'agenzia privata i dati sensibili di un cittadino</span> senza autorizzazione. Questo reato sanziona la violazione del dovere di fedeltà e riservatezza, che è un obbligo fondamentale per chiunque operi all'interno della Pubblica Amministrazione."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/b2eaff/01579b?text=Tutela+Segreti" alt="Infografica: Tutela dei Segreti d'Ufficio" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 22: Omissione o Ritardo di Atti d'Ufficio (Art. 328 c.p.) -->
+            <section id="slide22" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Omissione o Ritardo di Atti d'Ufficio (Art. 328 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Omissione o ritardo ingiustificato di un atto d'ufficio 'doveroso'.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Elemento Soggettivo:</span> Dolo (intenzione) o Colpa Grave.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "L'Articolo 328 del Codice Penale disciplina due reati legati all'inerzia della Pubblica Amministrazione: l'<span class="font-medium text-blue-600">Omissione</span> e il <span class="font-medium text-blue-600">Ritardo di Atti d'Ufficio</span>. Il primo comma si riferisce all'<span class="font-medium text-blue-600">omissione o al ritardo ingiustificato di un atto d'ufficio che il pubblico funzionario, per ragioni del suo servizio o della sua funzione, avrebbe dovuto compiere senza ritardo</span>. Non basta un semplice ritardo; deve essere 'ingiustificato' e riguardare un atto 'doveroso'. L'elemento soggettivo richiesto può essere il <span class="font-medium text-blue-600">dolo</span>, cioè l'intenzione specifica di omettere o ritardare, oppure, in alcune circostanze, la <span class="font-medium text-blue-600">colpa grave</span>. Pensate a un <span class="font-medium text-blue-600">impiegato dell'ufficio anagrafe che per mesi non rilascia un certificato di residenza</span> a un cittadino, nonostante le sue ripetute richieste e senza alcun motivo valido o giustificabile. Questo comportamento lede il diritto del cittadino a ottenere una prestazione dalla P.A. in tempi ragionevoli e il principio di buon andamento dell'amministrazione stessa. È un reato che mira a garantire l'efficienza e la reattività della macchina amministrativa."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/b3e5fc/0277bd?text=Omissione+e+Ritardo" alt="Infografica: Conseguenze dell'Omissione e Ritardo di Atti d'Ufficio" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 23: Rifiuto di Atti d'Ufficio (Art. 328 c.p.) -->
+            <section id="slide23" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Rifiuto di Atti d'Ufficio (Art. 328 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Sotto-fattispecie:</span> Previsto dal secondo comma dell'Art. 328 c.p.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Condizione:</span> P.U./IPS che rifiuta un atto per ragioni di giustizia/sicurezza pubblica/igiene/sanità.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Sempre all'interno dell'Articolo 328 del Codice Penale, ma nel secondo comma, troviamo il reato di <span class="font-medium text-blue-600">Rifiuto di Atti d'Ufficio</span>. Questa fattispecie è più specifica e si applica quando un Pubblico Ufficiale o un Incaricato di Pubblico Servizio, a cui viene richiesto di compiere un atto che rientra nelle sue funzioni e che è urgente per ragioni di <span class="font-medium text-blue-600">giustizia, sicurezza pubblica, ordine pubblico, igiene o sanità</span>, <span class="font-medium text-blue-600">rifiuta</span> di compierlo. La norma prevede un meccanismo specifico: chi ha interesse a che l'atto venga compiuto può fare istanza al superiore gerarchico; se l'atto non viene compiuto senza ritardo e senza giustificato motivo dopo il reclamo, scatta il reato. Un caso emblematico potrebbe essere quello di un <span class="font-medium text-blue-600">funzionario pubblico che, venuto a conoscenza di un reato in flagranza evidente, si rifiuta di attivare le procedure</span> di denuncia o di intervento che il suo ruolo imporrebbe per ragioni di giustizia. Questo tipo di reato punisce non la semplice inerzia, ma una volontà esplicita di negare una prestazione doverosa e urgente, mettendo a rischio beni fondamentali della collettività."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/a7ffeb/004d40?text=Rifiuto+Atti+Urgente" alt="Infografica: Rifiuto di Atti d'Ufficio Urgente" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 24: Interruzione di un Servizio Pubblico o di Pubblica Necessità (Art. 330 c.p.) -->
+            <section id="slide24" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Interruzione di un Servizio Pubblico o di Pubblica Necessità (Art. 330 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Interruzione o turbativa di un servizio pubblico o di pubblica necessità.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Soggetti Attivi:</span> Anche il privato, non solo P.U./IPS.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Il reato di <span class="font-medium text-blue-600">Interruzione di un Servizio Pubblico o di Pubblica Necessità</span>, sancito dall'Articolo 330 del Codice Penale, protegge la continuità e la regolarità dei servizi essenziali per la collettività. Si configura quando qualcuno, intenzionalmente, <span class="font-medium text-blue-600">interrompe o turba la regolarità di un ufficio o servizio pubblico o di un servizio di pubblica necessità</span>. A differenza di molti altri reati che abbiamo visto, questo può essere commesso da <span class="font-medium text-blue-600">chiunque</span>, quindi non solo da Pubblici Ufficiali o Incaricati di Pubblico Servizio, ma anche da privati cittadini. Pensate a un <span class="font-medium text-blue-600">gruppo di manifestanti che blocca l'ingresso di un ospedale</span>, impedendo l'accesso ai pazienti e al personale, o a un <span class="font-medium text-blue-600">gruppo di dipendenti pubblici che, senza preavviso e senza seguire le procedure di sciopero, blocca l'erogazione di un servizio essenziale</span> come la distribuzione dell'acqua o dell'energia. Il reato tutela l'interesse pubblico alla fruizione ininterrotta di servizi vitali, la cui interruzione può causare disagi significativi o persino pericoli per la salute e la sicurezza dei cittadini."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffcdd2/d32f2f?text=Servizio+Interrotto" alt="Infografica: Esempio di Interruzione di Servizio Pubblico" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 25: Soppressione, Distruzione o Occultamento di Atti Veri (Art. 490 c.p. applicato) -->
+            <section id="slide25" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Soppressione, Distruzione o Occultamento di Atti Veri (Art. 490 c.p. applicato)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Estensione:</span> Reato comune con particolare rilevanza per P.A.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Oggetto:</span> Documenti pubblici o aventi valore probatorio.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Sebbene l'Articolo 490 del Codice Penale, che disciplina la <span class="font-medium text-blue-600">Soppressione, Distruzione o Occultamento di Atti Veri</span>, sia un reato 'comune' – cioè può essere commesso da chiunque – assume una particolare rilevanza quando è commesso da o contro la Pubblica Amministrazione. Questo reato punisce chiunque, per procurare a sé o ad altri un vantaggio o per recare ad altri un danno, in tutto o in parte, <span class="font-medium text-blue-600">sopprime, distrugge o occulta un atto pubblico o privato vero</span>. Nel contesto della P.A., questo significa che se un Pubblico Ufficiale o un Incaricato di Pubblico Servizio distrugge, ad esempio, i <span class="font-medium text-blue-600">documenti relativi a un appalto</span> per nascondere delle irregolarità, o se un privato occulta <span class="font-medium text-blue-600">prove fondamentali in un procedimento amministrativo</span> per evitare sanzioni, commette questo reato. La norma mira a tutelare la 'fede pubblica' e la regolarità delle prove documentali. La distruzione di atti veri ostacola l'accertamento della verità e la corretta amministrazione, impedendo l'accesso a informazioni cruciali per la trasparenza e la legalità delle azioni della Pubblica Amministrazione."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffecb3/ff8f00?text=Occultamento+Documenti" alt="Infografica: Occultamento di Documenti e Prove" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 26: False Dichiarazioni o Attestazioni del Pubblico Ufficiale (Art. 476, 479 c.p.) -->
+            <section id="slide26" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">False Dichiarazioni o Attestazioni del Pubblico Ufficiale (Art. 476, 479 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Falso Ideologico:</span> Il P.U. attesta il falso in un atto pubblico.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Contenuto:</span> Atti che contengono dichiarazioni false o attestazioni di fatti non veri.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Entriamo ora nel campo dei reati di falso, cruciali per la tutela della Pubblica Amministrazione. Parliamo di <span class="font-medium text-blue-600">False Dichiarazioni o Attestazioni del Pubblico Ufficiale</span>, che si inquadrano nel <span class="font-medium text-blue-600">falso ideologico in atto pubblico</span>, disciplinato dall'Articolo 479 del Codice Penale. Questo reato si verifica quando un Pubblico Ufficiale, nell'esercizio delle sue funzioni, forma un atto pubblico nel quale <span class="font-medium text-blue-600">attesta falsamente che un fatto è stato compiuto in sua presenza o è da lui stato compiuto</span>, o che una dichiarazione è stata a lui resa, o attesta in modo falso altri fatti dei quali l'atto è destinato a provare la verità. La falsità qui non è nella forma fisica del documento, ma nel suo <span class="font-medium text-blue-600">contenuto</span>: l'atto è 'vero' nella sua materialità, ma il suo contenuto ideologico è falso. Un esempio calzante è un <span class="font-medium text-blue-600">agente di polizia che redige un verbale di accertamento</span> in cui dichiara di aver visto un'infrazione stradale che in realtà non è mai avvenuta, oppure un <span class="font-medium text-blue-600">funzionario comunale che rilascia un certificato</span> attestando una situazione di fatto (es. la residenza di una persona) che sa essere falsa. Questi reati minano la fede pubblica, ovvero la fiducia che i cittadini ripongono nella veridicità degli atti prodotti dalla Pubblica Amministrazione."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/e1f5fe/01579b?text=Falso+Ideologico" alt="Infografica: Rappresentazione del Falso Ideologico in Atto Pubblico" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 27: Falsità Materiale del Pubblico Ufficiale (Art. 476 c.p.) -->
+            <section id="slide27" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Falsità Materiale del Pubblico Ufficiale (Art. 476 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Alterazione di un documento pubblico da parte del P.U.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Condotta:</span> Fabbricazione, alterazione, soppressione, sostituzione di un atto pubblico.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Continuando con i reati di falso, l'Articolo 476 del Codice Penale sanziona la <span class="font-medium text-blue-600">Falsità Materiale commessa dal Pubblico Ufficiale in un Atto Pubblico</span>. Qui la falsità non riguarda il contenuto intrinseco dell'atto, come nel falso ideologico, ma la sua <span class="font-medium text-blue-600">autenticità e integrità materiale</span>. Il Pubblico Ufficiale commette questo reato quando, nell'esercizio delle sue funzioni, <span class="font-medium text-blue-600">contraffà</span> (cioè crea un documento falso che sembra originale), <span class="font-medium text-blue-600">altera</span> (modifica un documento vero, come cancellare o aggiungere parole), <span class="font-medium text-blue-600">sopprime</span> (fa sparire), o <span class="font-medium text-blue-600">sostituisce</span> (mette un falso al posto del vero) un atto pubblico. Per capirci meglio: se un <span class="font-medium text-blue-600">notaio cambia manualmente una data su un atto notarile</span> già redatto per alterarne gli effetti, sta commettendo falsità materiale. O se un <span class="font-medium text-blue-600">impiegato dell'archivio comunale sostituisce un documento</span> originale con una copia falsificata. Questo reato è cruciale perché la fiducia negli atti pubblici si basa non solo sul fatto che dicano il vero, ma anche sulla certezza che siano originali e non manipolati. La tutela si estende quindi sia alla 'veridicità' del contenuto che alla 'genuinità' della forma."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/c8e6c9/1b5e20?text=Falsità+Materiale" alt="Infografica: Rappresentazione della Falsità Materiale in Atto Pubblico" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 28: Concussione per Abuso d'Ufficio (vecchia formulazione e rapporto con il 319 quater) -->
+            <section id="slide28" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Concussione per Abuso d'Ufficio (vecchia formulazione e rapporto con il 319 quater)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Excursus storico:</span> Prima della Legge Severino (2012).</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Vecchia Concussione:</span> Comprendeva sia 'costrizione' che 'induzione'.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "È importante fare un piccolo excursus storico per comprendere l'evoluzione normativa. Fino al 2012, prima della cosiddetta <span class="font-medium text-blue-600">Legge Severino</span>, il reato di concussione (Articolo 317 del Codice Penale) era molto più ampio e comprendeva sia la condotta di 'costrizione' che quella di 'induzione'. Questo creava spesso difficoltà interpretative, perché la giurisprudenza faticava a distinguere quando il privato fosse una vera vittima e quando, invece, fosse in qualche modo 'consenziente' alla dazione di denaro o utilità, pur se indotto dal pubblico funzionario. La <span class="font-medium text-blue-600">riforma del 2012</span> ha risposto a queste criticità <span class="font-medium text-blue-600">scindendo la vecchia concussione in due reati distinti</span>: l'attuale Articolo 317, che ora punisce solo la <span class="font-medium text-blue-600">'concussione per costrizione'</span> (dove il privato è vittima), e il nuovo Articolo 319-quater, l'<span class="font-medium text-blue-600">'induzione indebita a dare o promettere utilità'</span>, dove il privato, pur 'indotto', è considerato 'concorrente' nel reato. Questo cambiamento ha avuto un impatto significativo, ridefinendo in modo più preciso i confini tra l'azione estorsiva del pubblico ufficiale e quella di mera persuasione, e di conseguenza, anche il ruolo del privato."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffe0b2/e65100?text=Evoluzione+Concussione" alt="Infografica: Evoluzione Legislativa della Concussione" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 29: Turbata Libertà degli Incanti (Art. 353 c.p.) -->
+            <section id="slide29" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Turbata Libertà degli Incanti (Art. 353 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Turbare gare, appalti pubblici, incanti.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Scopo:</span> Impedire la libera concorrenza e alterare l'esito.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Il reato di <span class="font-medium text-blue-600">Turbata Libertà degli Incanti</span>, previsto dall'Articolo 353 del Codice Penale, tutela la trasparenza e la correttezza delle procedure di gara e degli appalti pubblici. Si configura quando qualcuno, con violenza, minaccia, doni, promesse, collusione (cioè accordi segreti) o altri mezzi fraudolenti, <span class="font-medium text-blue-600">turba o impedisce la libertà degli incanti, delle aste o delle licitazioni private o dei pubblici incanti o delle licitazioni</span> che hanno per oggetto l'assegnazione di lavori, servizi o forniture. L'obiettivo di questo reato è garantire che l'aggiudicazione dei contratti pubblici avvenga secondo principi di libera concorrenza e meritocrazia, senza distorsioni o manipolazioni. Un esempio classico è un <span class="font-medium text-blue-600">gruppo di imprese che si accorda segretamente ('cartello') per presentare offerte pilotate</span> in un appalto pubblico, garantendosi a turno l'aggiudicazione, o un'impresa che <span class="font-medium text-blue-600">minaccia i concorrenti</span> per farli ritirare dalla gara. Questo reato è cruciale per la salvaguardia delle risorse pubbliche e per assicurare che i contratti vengano affidati al miglior offerente, senza illeciti condizionamenti."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffccbc/bf360c?text=Turbata+Libertà+Incanti" alt="Infografica: Esempio di Turbata Libertà degli Incanti" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 30: Inadempimento di Contratti di Forniture (Art. 355 c.p.) -->
+            <section id="slide30" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Inadempimento di Contratti di Forniture (Art. 355 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Inadempimento doloso di un contratto di fornitura con la P.A.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Soggetti:</span> Chiunque abbia assunto un obbligo contrattuale con la P.A.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Il reato di <span class="font-medium text-blue-600">Inadempimento di Contratti di Pubbliche Forniture</span>, disciplinato dall'Articolo 355 del Codice Penale, mira a tutelare gli interessi patrimoniali della Pubblica Amministrazione nei contratti di fornitura, lavoro o servizio. Si applica a <span class="font-medium text-blue-600">chiunque abbia assunto un obbligo contrattuale con la Pubblica Amministrazione</span> e, per frode o colpa grave, <span class="font-medium text-blue-600">non adempie, ovvero ritarda dolosamente l'adempimento</span> di un contratto di fornitura, di opera o di servizio pubblico. Non si tratta di un semplice inadempimento contrattuale, che sarebbe una questione civile; qui si richiede l'elemento del dolo o della colpa grave, e la lesione di un interesse pubblico. Un esempio potrebbe essere un'<span class="font-medium text-blue-600">impresa che si aggiudica un appalto per fornire materiali specifici a un ospedale pubblico</span>, ma poi consapevolmente fornisce materiali di qualità inferiore a quanto pattuito o non effettua affatto la consegna, sapendo di causare un disservizio. Questo reato sottolinea l'importanza della lealtà e della correttezza nei rapporti tra privati e Pubblica Amministrazione, soprattutto quando si tratta di beni o servizi essenziali per la collettività."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffecb3/ff8f00?text=Inadempimento+Contratti" alt="Infografica: Conseguenze dell'Inadempimento di Contratti Pubblici" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 31: Traffico di Influenze Illecite (Art. 346 bis c.p.) -->
+            <section id="slide31" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Traffico di Influenze Illecite (Art. 346 bis c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Introduzione:</span> Reato introdotto per contrastare la 'mediazione' illecita.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Elementi:</span> Sfruttamento di relazioni esistenti o millantate (non necessariamente false).</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Concludiamo questo blocco con il <span class="font-medium text-blue-600">Traffico di Influenze Illecite</span>, introdotto dall'Articolo 346-bis del Codice Penale nel 2012, in sostituzione del vecchio reato di millantato credito. Questo reato punisce chiunque, <span class="font-medium text-blue-600">sfruttando le proprie relazioni esistenti o anche solo millantate</span> (cioè vantate, anche se non vere), con un Pubblico Ufficiale o un Incaricato di Pubblico Servizio, si fa dare o promettere denaro o altre utilità come prezzo della propria mediazione illecita. Lo scopo è quello di far compiere o omettere un atto contrario ai doveri d'ufficio o di servizio, o di far ritardare un atto dovuto, da parte del pubblico funzionario. Il 'mediatore' non è necessariamente corrotto, ma sfrutta la sua presunta o reale influenza. Un esempio tipico è il <span class="font-medium text-blue-600">'faccendiere' che si fa pagare da un privato</span> assicurando di avere gli 'agganci' giusti per sbloccare una pratica o far ottenere un permesso, anche se poi magari l'influenza è del tutto inesistente o illecita. Questo reato mira a colpire la compravendita di rapporti e le forme di intermediazione che creano un alone di opacità e discredito sulla Pubblica Amministrazione, anche quando non si arriva alla corruzione diretta."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffcdd2/d32f2f?text=Traffico+Influenze" alt="Infografica: Dinamica del Traffico di Influenze Illecite" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 32: Falso Ideologico Commesso da Pubblico Ufficiale in Atti Pubblici (Art. 479 c.p.) -->
+            <section id="slide32" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Falso Ideologico Commesso da Pubblico Ufficiale in Atti Pubblici (Art. 479 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Natura:</span> Falsità nel <span class="font-medium text-blue-600">contenuto</span> ideologico dell'atto.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Riprendiamo il tema dei reati di falso, concentrandoci sul <span class="font-medium text-blue-600">Falso Ideologico Commesso da Pubblico Ufficiale in Atti Pubblici</span>, come già accennato nell'Articolo 479 del Codice Penale. È cruciale comprendere che in questo caso, il documento in sé è materialmente genuino, non è stato alterato fisicamente. La falsità risiede nel suo <span class="font-medium text-blue-600">contenuto</span>: il Pubblico Ufficiale attesta fatti che non corrispondono alla verità, pur avendo il dovere di attestare il vero. Pensate a un <span class="font-medium text-blue-600">funzionario dell'Anagrafe che, pur sapendo che una persona non ha mai risieduto in un certo comune, rilascia un certificato di residenza che attesta il contrario</span>. L'atto è materialmente valido, ma ciò che è scritto al suo interno è falso. Questo reato è di fondamentale importanza perché la validità e l'affidabilità degli atti pubblici si basano sulla presunzione di veridicità delle attestazioni dei pubblici ufficiali. Se questa fiducia viene tradita, l'intera impalcatura amministrativa e giuridica ne risentirà gravemente."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/e1f5fe/01579b?text=Falso+Ideologico+Dettaglio" alt="Infografica: Dettaglio sul Falso Ideologico in Atto Pubblico" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 33: Falsità Materiale del Pubblico Ufficiale in Atti Pubblici (Art. 476 c.p.) -->
+            <section id="slide33" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Falsità Materiale del Pubblico Ufficiale in Atti Pubblici (Art. 476 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Alterazione di un documento pubblico da parte del P.U.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Condotta:</span> Fabbricazione, alterazione, soppressione, sostituzione di un atto pubblico.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Continuando con i reati di falso, l'Articolo 476 del Codice Penale sanziona la <span class="font-medium text-blue-600">Falsità Materiale commessa dal Pubblico Ufficiale in un Atto Pubblico</span>. Qui la falsità non riguarda il contenuto intrinseco dell'atto, come nel falso ideologico, ma la sua <span class="font-medium text-blue-600">autenticità e integrità materiale</span>. Il Pubblico Ufficiale commette questo reato quando, nell'esercizio delle sue funzioni, <span class="font-medium text-blue-600">contraffà</span> (cioè crea un documento falso che sembra originale), <span class="font-medium text-blue-600">altera</span> (modifica un documento vero, come cancellare o aggiungere parole), <span class="font-medium text-blue-600">sopprime</span> (fa sparire), o <span class="font-medium text-blue-600">sostituisce</span> (mette un falso al posto del vero) un atto pubblico. Per capirci meglio: se un <span class="font-medium text-blue-600">notaio cambia manualmente una data su un atto notarile</span> già redatto per alterarne gli effetti, sta commettendo falsità materiale. O se un <span class="font-medium text-blue-600">impiegato dell'archivio comunale sostituisce un documento</span> originale con una copia falsificata. Questo reato è cruciale perché la fiducia negli atti pubblici si basa non solo sul fatto che dicano il vero, ma anche sulla certezza che siano originali e non manipolati. La tutela si estende quindi sia alla 'veridicità' del contenuto che alla 'genuinità' della forma."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/c8e6c9/1b5e20?text=Falsità+Materiale+Dettaglio" alt="Infografica: Dettaglio sulla Falsità Materiale in Atto Pubblico" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 34: Falsità in Scrittura Privata (Art. 485 c.p.) - Rilevanza per la P.A. -->
+            <section id="slide34" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Falsità in Scrittura Privata (Art. 485 c.p.) - Rilevanza per la P.A.</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Reato Comune:</span> Commesso da chiunque (non solo P.U./IPS).</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Rilevanza P.A.:</span> Quando la scrittura privata è usata in un contesto pubblico.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "L'Articolo 485 del Codice Penale disciplina la <span class="font-medium text-blue-600">Falsità in Scrittura Privata</span>. A differenza dei precedenti, questo è un <span class="font-medium text-blue-600">reato comune</span>, il che significa che può essere commesso da <span class="font-medium text-blue-600">chiunque</span>, non solo da Pubblici Ufficiali o Incaricati di Pubblico Servizio. Questo reato punisce chiunque falsifica o altera una scrittura privata, o fa uso di una scrittura privata falsificata o alterata. Ma perché è rilevante per i reati contro la Pubblica Amministrazione? Perché spesso i privati utilizzano scritture private false per ingannare o trarre in errore la P.A. Pensate a un <span class="font-medium text-blue-600">cittadino che falsifica la firma su una domanda</span> da presentare a un ufficio pubblico, o che <span class="font-medium text-blue-600">presenta un contratto di locazione falsificato</span> per ottenere un beneficio. Sebbene l'atto sia privato, il suo uso in un contesto pubblico per ingannare l'amministrazione lo rende rilevante. Spesso, questo reato concorre con l'<span class="font-medium text-blue-600">uso di atto falso</span> (Art. 489 c.p.), che vedremo a breve. La norma mira a tutelare la fiducia nella veridicità dei documenti, anche privati, quando questi assumono rilevanza nell'ambito dei rapporti con la Pubblica Amministrazione."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/fff9c4/fbc02d?text=Falsità+Scrittura+Privata" alt="Infografica: Rilevanza della Falsità in Scrittura Privata per la P.A." class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 35: Uso di Atto Falso (Art. 489 c.p.) - Rilevanza per la P.A. -->
+            <section id="slide35" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Uso di Atto Falso (Art. 489 c.p.) - Rilevanza per la P.A.</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Condotta:</span> Chi, senza concorrere alla falsificazione, usa un atto falso.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Presupposto:</span> L'atto è già falso (materialmente o ideologicamente).</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Il reato di <span class="font-medium text-blue-600">Uso di Atto Falso</span>, previsto dall'Articolo 489 del Codice Penale, è strettamente legato ai reati di falsità che abbiamo appena visto. Si configura quando <span class="font-medium text-blue-600">chiunque, senza essere concorso nella falsificazione dell'atto, fa uso di un atto pubblico o privato falso</span>. Ciò significa che la persona che commette questo reato non ha materialmente falsificato il documento, né ha attestato il falso al suo interno, ma semplicemente lo utilizza sapendo che è falso. Nel contesto dei reati contro la Pubblica Amministrazione, questo è un reato molto frequente. Immaginate un <span class="font-medium text-blue-600">cittadino che presenta un certificato medico falso</span> al proprio datore di lavoro pubblico per ottenere un congedo, o che <span class="font-medium text-blue-600">esibisce una falsa autodichiarazione</span> per accedere a un beneficio non dovuto. Il reato tutela la fiducia della P.A. nella genuinità e veridicità dei documenti che le vengono presentati. Anche se il privato non ha creato il falso, il suo comportamento di utilizzarlo per ingannare l'amministrazione è ugualmente sanzionato, in quanto mina la trasparenza e la legalità dei rapporti con la Pubblica Amministrazione."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffccbc/bf360c?text=Uso+Atto+Falso" alt="Infografica: Conseguenze dell'Uso di Atto Falso" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 36: Reati di Falso e Tutela della Fede Pubblica -->
+            <section id="slide36" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Reati di Falso e Tutela della Fede Pubblica</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Rapporto:</span> I reati di falso proteggono la fiducia nell'atto pubblico.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Fede Pubblica:</span> Affidabilità degli atti ufficiali.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Per concludere il capitolo sui reati di falso, è fondamentale sottolineare il bene giuridico che tutti questi reati mirano a proteggere: la <span class="font-medium text-blue-600">'fede pubblica'</span>. Con 'fede pubblica' intendiamo la fiducia che la collettività ripone nell'autenticità e nella veridicità degli atti pubblici e privati destinati a provare la verità di fatti o rapporti giuridici. Gli atti pubblici, in particolare, godono di una speciale 'fede privilegiata', che ne garantisce la validità fino a prova contraria. Quando un atto viene falsificato, sia nella sua materialità che nel suo contenuto ideologico, viene compromessa questa fiducia fondamentale. Questo non solo può causare danni economici o procedurali, ma mina alle fondamenta la trasparenza, la legalità e la reputazione della Pubblica Amministrazione. La <span class="font-medium text-blue-600">funzione probatoria</span> di questi documenti è essenziale per la certezza dei diritti e dei rapporti giuridici. Per questo, il legislatore punisce severamente le condotte che attentano alla 'veridicità ufficiale', garantendo che i documenti prodotti o usati in contesti pubblici siano affidabili e credibili."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/bbdefb/1a237e?text=Fede+Pubblica" alt="Infografica: Concetto di Fede Pubblica e Atti Ufficiali" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 37: Truffa e Truffa Aggravata per Erogazioni Pubbliche (Artt. 640, 640 bis c.p.) -->
+            <section id="slide37" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Truffa e Truffa Aggravata per Erogazioni Pubbliche (Artt. 640, 640 bis c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione (Truffa):</span> Artifici o raggiri per indurre in errore qualcuno e procurare ingiusto profitto con danno altrui.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Truffa Aggravata (Art. 640 bis):</span> Se il fatto riguarda contributi, finanziamenti, mutui agevolati, o altre erogazioni pubbliche.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Per completare il panorama dei reati che colpiscono il patrimonio della Pubblica Amministrazione, è essenziale parlare della <span class="font-medium text-blue-600">Truffa</span>, disciplinata dall'Articolo 640 del Codice Penale. La truffa è un reato comune che si configura quando qualcuno, mediante <span class="font-medium text-blue-600">artifici o raggiri</span>, induce in errore un'altra persona e così facendo, si procura un <span class="font-medium text-blue-600">ingiusto profitto con altrui danno</span>. Nel contesto della Pubblica Amministrazione, l'attenzione si sposta sulla <span class="font-medium text-blue-600">Truffa aggravata per il conseguimento di erogazioni pubbliche</span>, prevista dall'Articolo 640-bis del Codice Penale. Questa fattispecie si verifica quando la truffa è commessa per ottenere indebitamente i medesimi contributi, finanziamenti o altre erogazioni di cui abbiamo parlato per l'indebita percezione. La differenza cruciale con il 316-ter è che qui è richiesta una condotta più complessa di 'artifici o raggiri', cioè una vera e propria 'messa in scena' atta a ingannare la Pubblica Amministrazione. Ad esempio, la presentazione di un <span class="font-medium text-blue-600">finto progetto di ricerca o di un'attività inesistente</span> per ottenere finanziamenti europei o statali, con documentazione e simulazioni che inducono in errore l'ente erogatore. La truffa protegge l'integrità patrimoniale della P.A. da condotte fraudolente ben orchestrate."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffcdd2/d32f2f?text=Truffa+Aggravata" alt="Infografica: Esempio di Truffa Aggravata per Erogazioni Pubbliche" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 38: Resistenza a Pubblico Ufficiale (Art. 337 c.p.) -->
+            <section id="slide38" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Resistenza a Pubblico Ufficiale (Art. 337 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Uso di violenza o minaccia per opporsi a P.U./IPS nell'atto del compimento del suo ufficio.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Elementi:</span> Violenza/minaccia, resistenza, atto legittimo del P.U.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Iniziamo i reati commessi da privati contro la P.A. con la <span class="font-medium text-blue-600">Resistenza a Pubblico Ufficiale</span>, disciplinata dall'Articolo 337 del Codice Penale. Questo reato si verifica quando un privato, con <span class="font-medium text-blue-600">violenza o minaccia</span>, si oppone a un Pubblico Ufficiale o a un Incaricato di Pubblico Servizio mentre sta compiendo un atto del suo ufficio o servizio. È fondamentale che l'atto che il pubblico funzionario sta compiendo sia <span class="font-medium text-blue-600">legittimo</span>. Se l'atto fosse illegittimo, la resistenza potrebbe non configurare il reato. La violenza o la minaccia devono essere idonee a impedire o a turbare il compimento dell'atto. Un esempio lampante è un <span class="font-medium text-blue-600">individuo che, durante un controllo di polizia, spintona un agente per fuggire</span> e impedire un arresto, o che <span class="font-medium text-blue-600">minaccia un ufficiale giudiziario</span> per impedirgli di notificare un atto. Il reato tutela il regolare svolgimento delle funzioni pubbliche e il prestigio delle istituzioni, garantendo che i pubblici funzionari possano operare senza subire intimidazioni o aggressioni da parte dei privati."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffcdd2/d32f2f?text=Resistenza+P.U." alt="Infografica: Esempio di Resistenza a Pubblico Ufficiale" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 39: Oltraggio a Pubblico Ufficiale (Art. 341 bis c.p.) -->
+            <section id="slide39" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Oltraggio a Pubblico Ufficiale (Art. 341 bis c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Offendere l'onore o il prestigio di un P.U./IPS nell'esercizio delle sue funzioni.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Elementi:</span> Offesa, in luogo pubblico/aperto al pubblico, in presenza di più persone, fatto non determinato.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Proseguiamo con l'<span class="font-medium text-blue-600">Oltraggio a Pubblico Ufficiale</span>, un reato che ha avuto una storia complessa nel nostro ordinamento, ora previsto dall'Articolo 341-bis del Codice Penale. Questo reato si configura quando un privato <span class="font-medium text-blue-600">offende l'onore o il prestigio di un Pubblico Ufficiale o di un Incaricato di Pubblico Servizio mentre compie un atto d'ufficio o di servizio, o a causa o nell'esercizio delle sue funzioni</span>, e la condotta avviene <span class="font-medium text-blue-600">in luogo pubblico o aperto al pubblico</span>, e <span class="font-medium text-blue-600">in presenza di più persone</span>. L'offesa deve essere diretta alla funzione o al ruolo, non solo alla persona. Per esempio, se un <span class="font-medium text-blue-600">cittadino, in piazza, insulta in maniera volgare un vigile urbano</span> che sta elevando una multa, gridandogli epiteti offensivi in presenza di altri passanti, commette oltraggio. La norma mira a tutelare il decoro e il rispetto che la Pubblica Amministrazione merita nell'esercizio delle sue funzioni."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffecb3/ff8f00?text=Oltraggio+P.U." alt="Infografica: Esempio di Oltraggio a Pubblico Ufficiale" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 40: Interruzione di un Servizio Pubblico (Art. 340 c.p.) -->
+            <section id="slide40" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Interruzione di un Servizio Pubblico (Art. 340 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Ripresa e Approfondimento:</span> Reato 'comune', ma spesso commesso da privati vs P.A.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Condotta:</span> Impedire il regolare svolgimento o turbare il funzionamento.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Abbiamo già accennato all'interruzione di servizio pubblico, ma l'Articolo 340 del Codice Penale, 'Interruzione di un Ufficio o Servizio Pubblico o di un Servizio di Pubblica Necessità', merita un ulteriore approfondimento, in quanto è un reato che può essere commesso da <span class="font-medium text-blue-600">privati</span> e colpisce direttamente la funzionalità della Pubblica Amministrazione. Questo articolo punisce chiunque, fuori dei casi previsti dall'Articolo 330 (cioè senza violenza o minaccia), <span class="font-medium text-blue-600">interrompe o turba la regolarità di un ufficio o servizio pubblico o di un servizio di pubblica necessità</span>. Un esempio potrebbe essere un <span class="font-medium text-blue-600">gruppo di persone che occupa fisicamente un ufficio pubblico</span> impedendone l'accesso ai dipendenti e al pubblico, o un <span class="font-medium text-blue-600">attacco informatico che blocca il funzionamento dei sistemi</span> di un ente pubblico, impedendo l'erogazione di servizi online. Il reato tutela il buon andamento e la continuità dei servizi offerti dalla P.A., fondamentali per la vita quotidiana dei cittadini."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffcdd2/d32f2f?text=Interruzione+Servizio" alt="Infografica: Esempio di Interruzione di Servizio Pubblico" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 41: Violenza o Minaccia a Pubblico Ufficiale (Art. 336 c.p.) -->
+            <section id="slide41" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Violenza o Minaccia a Pubblico Ufficiale (Art. 336 c.p.)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Definizione:</span> Violenza o minaccia per costringere P.U. a fare/omettere un atto d'ufficio.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Scopo:</span> Specifico di costringere il P.U. a una determinata azione/omissione.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Simile ma distinto dalla resistenza è la <span class="font-medium text-blue-600">Violenza o Minaccia a Pubblico Ufficiale</span>, prevista dall'Articolo 336 del Codice Penale. Mentre nella resistenza (Art. 337) l'obiettivo è opporsi a un atto che il Pubblico Ufficiale sta compiendo, qui lo scopo è molto più specifico: <span class="font-medium text-blue-600">costringere</span> il Pubblico Ufficiale o l'Incaricato di Pubblico Servizio a compiere o omettere un atto d'ufficio o di servizio. La violenza o la minaccia sono strumenti per imporre una volontà. Un esempio chiaro è un <span class="font-medium text-blue-600">privato che minaccia fisicamente un funzionario comunale per fargli firmare un permesso di costruzione illegale</span>, o che minaccia un impiegato per non fargli denunciare un illecito. L'elemento chiave è la finalità coattiva: il soggetto attivo vuole ottenere un determinato comportamento dal pubblico ufficiale. Questo reato tutela la libertà di determinazione del pubblico funzionario nell'esercizio delle sue funzioni, assicurando che le decisioni della P.A. non siano il frutto di intimidazioni, ma della corretta applicazione della legge."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffecb3/ff8f00?text=Violenza+o+Minaccia" alt="Infografica: Esempio di Violenza o Minaccia a Pubblico Ufficiale" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 42: Millantato Credito (Art. 346 c.p.) - Abrogato, ma utile per contesto. -->
+            <section id="slide42" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Millantato Credito (Art. 346 c.p.) - Abrogato, ma utile per contesto.</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Storia:</span> Abrogato nel 2012 dalla L. 190/2012 (Legge Severino).</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Sostituito da:</span> Traffico di Influenze Illecite (Art. 346 bis c.p.).</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Per completare il quadro dei reati contro la Pubblica Amministrazione, è utile menzionare il reato di <span class="font-medium text-blue-600">Millantato Credito</span>, che era previsto dall'Articolo 346 del Codice Penale, ma che è stato <span class="font-medium text-blue-600">abrogato nel 2012 dalla Legge Severino</span> (Legge n. 190/2012). Questo reato puniva chiunque si faceva dare o promettere denaro o altre utilità col pretesto di dover comprare il favore di un Pubblico Ufficiale, o di doverlo remunerare per l'esercizio delle sue funzioni. Spesso si trattava di 'millantatori' che vantavano influenze inesistenti, ma che comunque danneggiavano l'immagine e la credibilità della P.A. Sebbene abrogato, è importante conoscerlo perché la sua abolizione ha portato alla creazione del <span class="font-medium text-blue-600">Traffico di Influenze Illecite (Art. 346-bis c.p.)</span>, che abbiamo visto precedentemente. Questa modifica legislativa riflette la volontà del legislatore di affinare gli strumenti di contrasto alla corruzione e alle sue diverse manifestazioni, punendo in modo più specifico le condotte di intermediazione illecua, sia che l'influenza sia reale o solo millantata, quando sono finalizzate a ottenere vantaggi illegittimi dalla Pubblica Amministrazione."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/e0f2f7/006064?text=Millantato+Credito" alt="Infografica: Concetto di Millantato Credito e la sua Abrogazione" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 43: Circostanze Aggravanti e Attenuanti Comuni -->
+            <section id="slide43" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Circostanze Aggravanti e Attenuanti Comuni</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Aggravanti (Art. 61 c.p.):</span> Es. aver agito per motivi abietti o futili.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Attenuanti (Art. 62 c.p.):</span> Es. aver riparato il danno; aver agito per particolare valore morale/sociale.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Oltre alla definizione specifica di ciascun reato, il Codice Penale prevede delle <span class="font-medium text-blue-600">Circostanze Aggravanti e Attenuanti comuni</span>, che possono aumentare o diminuire la pena prevista per il reato base. Le <span class="font-medium text-blue-600">circostanze aggravanti</span>, come quelle elencate nell'Articolo 61 del Codice Penale, aumentano la pena. Pensiamo ad esempio all'aver agito per <span class="font-medium text-blue-600">motivi abietti o futili</span> (come la sete di denaro in un caso di corruzione), o all'aver commesso il reato con <span class="font-medium text-blue-600">crudeltà</span>. Le <span class="font-medium text-blue-600">circostanze attenuanti</span>, previste dall'Articolo 62, diminuiscono la pena. Un esempio è l'aver <span class="font-medium text-blue-600">riparato interamente il danno</span> causato dal reato prima del giudizio, o l'aver agito per un <span class="font-medium text-blue-600">particolare valore morale o sociale</span>. Queste circostanze permettono al giudice di modulare la pena in base alla gravità concreta del singolo fatto e alla condotta del reo, rendendo il sistema più flessibile e attento alle specificità di ogni caso, anche nei reati contro la Pubblica Amministrazione."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/fff9c4/fbc02d?text=Aggravanti+e+Attenuanti" alt="Infografica: Circostanze Aggravanti e Attenuanti nel Diritto Penale" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 44: Confisca (Art. 322 ter c.p. e altri) -->
+            <section id="slide44" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Confisca (Art. 322 ter c.p. e altri)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Confisca Obbligatoria:</span> Del prezzo, profitto o prodotto del reato.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Confisca per Equivalente:</span> Se non si trova il bene diretto, si confisca altro bene di pari valore.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Uno strumento fondamentale per contrastare i reati contro la Pubblica Amministrazione, soprattutto quelli a sfondo economico, è la <span class="font-medium text-blue-600">Confisca</span>. La confisca è una misura di sicurezza patrimoniale che priva il reo del vantaggio economico derivante dal reato. Per molti reati contro la P.A., in particolare quelli di corruzione e peculato, l'Articolo 322-ter del Codice Penale prevede la <span class="font-medium text-blue-600">confisca obbligatoria</span> del prezzo, del profitto o del prodotto del reato. Ad esempio, se un Pubblico Ufficiale riceve 100.000 euro come tangente, quella somma deve essere confiscata. Ma cosa succede se il denaro è stato speso o non si trova? In questi casi, è prevista la <span class="font-medium text-blue-600">confisca per equivalente</span>, ovvero si confisca denaro o altri beni del condannato per un valore corrispondente al profitto illecito. Pensate a un corrotto che ha speso la tangente per comprare un'auto di lusso: se la tangente non è più reperibile, gli verrà confiscata l'auto o altri beni fino al raggiungimento del valore della tangente. Questo strumento è essenziale per disincentivare la criminalità economica, colpendo i colpevoli nel loro patrimonio e privandoli dei benefici illeciti."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffcdd2/d32f2f?text=Confisca+Beni" alt="Infografica: Meccanismi della Confisca di Beni" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 45: La Responsabilità degli Enti (D.Lgs. 231/2001) -->
+            <section id="slide45" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">La Responsabilità degli Enti (D.Lgs. 231/2001)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Sistema:</span> 'Responsabilità amministrativa' degli enti per reati commessi nel loro interesse/vantaggio.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Reati Presupposto:</span> Molti reati contro la P.A. sono inclusi (es. corruzione, concussione).</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Un pilastro moderno del contrasto ai reati contro la Pubblica Amministrazione è la <span class="font-medium text-blue-600">Responsabilità Amministrativa degli Enti</span>, introdotta dal Decreto Legislativo 231 del 2001. Prima di questa legge, solo le persone fisiche potevano essere punite per i reati; le aziende no. Ora, un ente (società, associazione) può essere ritenuto 'responsabile' e sanzionato (con multe salate, interdizioni, confisca) se un suo dipendente o dirigente commette un reato a vantaggio o nell'interesse dell'ente stesso. Molti dei reati che stiamo esaminando, come la <span class="font-medium text-blue-600">corruzione</span>, la <span class="font-medium text-blue-600">concussione</span>, la <span class="font-medium text-blue-600">turbata libertà degli incanti</span>, sono tra i 'reati presupposto' che fanno scattare questa responsabilità. La legge 231 ha introdotto la possibilità per gli enti di dotarsi di un <span class="font-medium text-blue-600">Modello di Organizzazione, Gestione e Controllo (MOGC)</span>. Se l'ente dimostra di aver adottato e attuato efficacemente un MOGC per prevenire i reati e il reato è stato commesso eludendo fraudolentemente il modello, può essere esentato da responsabilità o la pena può essere attenuata. Questo ha spinto le aziende a investire nella cultura della legalità, per proteggersi non solo da sanzioni penali, ma anche dalla reputazione negativa."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/bbdefb/1a237e?text=Responsabilità+Enti" alt="Infografica: Responsabilità degli Enti (D.Lgs. 231/2001)" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 46: Le Misure Preventiva Antimafia (Codice Antimafia) -->
+            <section id="slide46" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Le Misure Preventiva Antimafia (Codice Antimafia)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Estensione Tutela:</span> Prevenzione delle infiltrazioni criminali nell'economia.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Strumenti:</span> Interdittive antimafia, sequestri e confische preventive.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Per proteggere la Pubblica Amministrazione dalle infiltrazioni della criminalità organizzata, un ruolo cruciale è svolto dalle <span class="font-medium text-blue-600">Misure Preventive Antimafia</span>, previste dal cosiddetto <span class="font-medium text-blue-600">Codice Antimafia</span>, il Decreto Legislativo 159 del 2011. Queste misure non sono sanzioni penali in senso stretto, ma provvedimenti amministrativi e patrimoniali che vengono applicati per prevenire che soggetti o imprese legate alla criminalità organizzata possano inquinare l'economia legale e, in particolare, i rapporti con la Pubblica Amministrazione. Lo strumento più noto è l'<span class="font-medium text-blue-600">interdittiva antimafia</span>, un provvedimento con cui la Prefettura vieta a un'impresa di contrattare con la P.A. o di accedere a finanziamenti pubblici, anche in assenza di una condanna penale, ma in presenza di indizi di infiltrazione mafiosa. Vengono inoltre previste misure di prevenzione patrimoniale come i <span class="font-medium text-blue-600">sequestri e le confische preventive</span> di beni, anche a carico di persone che non sono state condannate ma per le quali si presume un'origine illecita del patrimonio. Queste norme servono a blindare la Pubblica Amministrazione, impedendo che venga utilizzata o condizionata da soggetti legati alla criminalità organizzata."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffe0b2/e65100?text=Misure+Antimafia" alt="Infografica: Misure Preventive Antimafia" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 47: La Denuncia e la Querela -->
+            <section id="slide47" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">La Denuncia e la Querela</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Denuncia:</span> Obbligo di P.U./IPS per reati perseguibili d'ufficio.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Querela:</span> Necessaria per reati perseguibili a querela di parte (es. alcuni falsi minori).</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Infine, vediamo come si attiva il processo penale per i reati contro la Pubblica Amministrazione. Fondamentali sono gli atti di <span class="font-medium text-blue-600">denuncia</span> e <span class="font-medium text-blue-600">querela</span>. La <span class="font-medium text-blue-600">denuncia</span> è un atto con cui chiunque abbia notizia di un reato perseguibile d'ufficio (cioè la cui persecuzione non dipende dalla volontà della vittima) informa l'autorità giudiziaria o di polizia. Per i Pubblici Ufficiali e gli Incaricati di Pubblico Servizio, esiste un <span class="font-medium text-blue-600">obbligo specifico di denuncia</span> (Articolo 331 del Codice di Procedura Penale) se nell'esercizio delle loro funzioni vengono a conoscenza di un reato perseguibile d'ufficio. Questo è cruciale per la lotta alla corruzione e ad altri illeciti. La <span class="font-medium text-blue-600">querela</span>, invece, è una condizione di procedibilità per alcuni reati 'minori' o che tutelano interessi più strettamente personali, e deve essere presentata dalla persona offesa entro un termine stabilito. Ad esempio, alcuni tipi di falso meno gravi potrebbero richiedere la querela. L'importanza della segnalazione da parte di cittadini e, soprattutto, l'obbligo di denuncia per i pubblici funzionari, sono elementi essenziali per garantire che le violazioni contro la Pubblica Amministrazione non restino impunite, contribuendo così a rafforzare la legalità e la trasparenza."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/b2dfdb/00796b?text=Denuncia+e+Querela" alt="Infografica: Processo di Denuncia e Querela" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 48: Le Leggi Anticorruzione in Italia -->
+            <section id="slide48" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Le Leggi Anticorruzione in Italia</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">L. 190/2012 (Legge Severino):</span> Riforma strutturale.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Obiettivi:</span> Prevenzione, contrasto, trasparenza, riorganizzazione normativa.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Negli ultimi anni, l'Italia ha intrapreso un percorso di rafforzamento della legislazione per contrastare la corruzione, culminato nella <span class="font-medium text-blue-600">Legge 190 del 2012</span>, nota come <span class="font-medium text-blue-600">Legge Severino</span>. Questa legge ha rappresentato una riforma strutturale, introducendo non solo nuovi reati, come il traffico di influenze illecite e l'induzione indebita, ma anche modificando significativamente i reati esistenti, come la concussione e la corruzione. Gli obiettivi principali erano la <span class="font-medium text-blue-600">prevenzione</span> del fenomeno corruttivo, un più efficace <span class="font-medium text-blue-600">contrasto</span> e l'aumento della <span class="font-medium text-blue-600">trasparenza</span> nell'azione amministrativa. Tra le innovazioni più importanti, oltre alle modifiche al Codice Penale, ci sono state misure preventive come l'istituzione dell'ANAC e l'obbligo per le pubbliche amministrazioni di adottare Piani Triennali di Prevenzione della Corruzione e Trasparenza. La Legge Severino, e le successive leggi che l'hanno integrata, dimostrano la crescente consapevolezza della necessità di un approccio multidimensionale per debellare la corruzione, che non si limiti alla repressione ma investa anche sulla prevenzione e sulla promozione di una cultura dell'integrità."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/b2eaff/01579b?text=Leggi+Anticorruzione" alt="Infografica: Cronologia delle Leggi Anticorruzione in Italia" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 49: Il Ruolo dell'ANAC (Autorità Nazionale Anti Corruzione) -->
+            <section id="slide49" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Il Ruolo dell'ANAC (Autorità Nazionale Anti Corruzione)</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Istituzione:</span> Creata dalla Legge Severino (L. 190/2012).</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Funzioni:</span> Vigilanza, consulenza, sanzioni, promozione della trasparenza.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Un attore chiave nella strategia anticorruzione italiana è l'<span class="font-medium text-blue-600">ANAC</span>, l'<span class="font-medium text-blue-600">Autorità Nazionale Anti Corruzione</span>. Istituita proprio dalla Legge Severino, l'ANAC è un organismo indipendente che ha il compito di prevenire e contrastare la corruzione e l'illegalità nella Pubblica Amministrazione. Le sue funzioni sono molteplici: <span class="font-medium text-blue-600">vigila</span> sul rispetto della normativa anticorruzione e sulla trasparenza, fornisce <span class="font-medium text-blue-600">consulenza</span> agli enti pubblici, emana <span class="font-medium text-blue-600">linee guida</span>, e in alcuni casi può anche irrogare <span class="font-medium text-blue-600">sanzioni</span>. Uno degli strumenti più importanti promossi dall'ANAC sono i <span class="font-medium text-blue-600">Piani Triennali di Prevenzione della Corruzione e della Trasparenza (PTPCT)</span>, che ogni amministrazione è obbligata a elaborare. Questi piani identificano i rischi di corruzione specifici di ogni ente e definiscono le misure concrete per prevenirli. L'ANAC, quindi, non si limita a reprimere gli illeciti a posteriori, ma opera in ottica preventiva, cercando di rafforzare la legalità e la trasparenza all'interno della Pubblica Amministrazione, rendendola meno vulnerabile ai fenomeni corruttivi."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/a7ffeb/004d40?text=Ruolo+ANAC" alt="Infografica: Funzioni e Strumenti dell'ANAC" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 50: Strumenti Internazionali e Convenzioni -->
+            <section id="slide50" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Strumenti Internazionali e Convenzioni</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Globalizzazione:</span> Corruzione come fenomeno transnazionale.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Convenzione ONU:</span> Convenzione di Merida (UNCAC) del 2003.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Infine, è fondamentale riconoscere che la corruzione è un fenomeno che non conosce confini e per questo richiede un approccio globale. Esistono importanti <span class="font-medium text-blue-600">strumenti internazionali e convenzioni</span> volte a contrastarla. La più significativa è la <span class="font-medium text-blue-600">Convenzione delle Nazioni Unite contro la Corruzione</span>, adottata a Merida nel 2003, spesso chiamata semplicemente <span class="font-medium text-blue-600">Convenzione di Merida</span>. Questa convenzione obbliga gli Stati firmatari a criminalizzare una vasta gamma di atti corruttivi e a implementare misure preventive, cooperative e di recupero dei beni. L'Italia, come molti altri paesi, è firmataria e ha adeguato la propria legislazione. Un altro attore importante è il <span class="font-medium text-blue-600">GRECO</span>, il <span class="font-medium text-blue-600">Gruppo di Stati contro la corruzione del Consiglio d'Europa</span>, che valuta periodicamente la conformità degli Stati membri agli standard internazionali di lotta alla corruzione e fornisce raccomandazioni per migliorare le legislazioni nazionali. Questi strumenti e organismi internazionali sono cruciali per favorire la cooperazione tra paesi, lo scambio di informazioni e l'armonizzazione delle normative, rafforzando così la capacità di tutti di combattere un fenomeno che minaccia la stabilità e lo sviluppo a livello globale."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/c5e1a5/558b2f?text=Cooperazione+Internazionale" alt="Infografica: Strumenti e Convenzioni Internazionali Anticorruzione" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 51: L'Importanza della Legalità nella P.A. -->
+            <section id="slide51" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">L'Importanza della Legalità nella P.A.</h2>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Impatto:</span> Danno sociale ed economico della corruzione.</p>
+                <p class="text-gray-600 leading-relaxed mb-4"><span class="font-medium text-blue-600">Fiducia:</span> Essenziale per il rapporto cittadino-istituzione.</p>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Siamo giunti alla quasi conclusione di questa nostra analisi. Ripetiamolo: l'<span class="font-medium text-blue-600">importanza della legalità nella Pubblica Amministrazione</span> non può essere sottovalutata. La corruzione e i reati contro la P.A. non sono semplici illeciti burocratici; sono vere e proprie malattie che corrodono il tessuto sociale, economico e democratico di un Paese. Ogni atto illecito genera sfiducia, distorce il mercato, allontana investimenti e, in ultima analisi, impoverisce la collettività. La <span class="font-medium text-blue-600">fiducia dei cittadini</span> nelle proprie istituzioni è un bene immateriale di valore inestimabile, ed è il fondamento di una democrazia sana. Non è solo un compito della magistratura o delle forze dell'ordine contrastare questi fenomeni; è un <span class="font-medium text-blue-600">ruolo attivo di ogni cittadino</span> che deve pretendere legalità e trasparenza, e di <span class="font-medium text-blue-600">ogni operatore pubblico</span> che deve agire con integrità e senso del dovere. Solo attraverso un impegno collettivo e costante potremo garantire una Pubblica Amministrazione efficiente, trasparente e al servizio esclusivo del bene comune, un vero motore di sviluppo e giustizia per il nostro Paese."</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/ffecb3/ff8f00?text=Legalità+e+Società" alt="Infografica: Benefici della Legalità nella P.A. per la Società" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Slide 52: Domande e Ringraziamenti -->
+            <section id="slide52" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-4">Domande e Ringraziamenti</h2>
+                <p class="text-gray-600 leading-relaxed mb-6"><span class="font-medium text-blue-600">Approfondimento:</span> "Siamo arrivati alla fine della nostra presentazione sui reati contro la Pubblica Amministrazione. Spero che questa analisi dettagliata vi abbia fornito una panoramica chiara e approfondita su un argomento così complesso ma cruciale per la nostra società. A questo punto, lascio spazio alle vostre domande. Sono a vostra disposizione per chiarimenti o ulteriori approfondimenti su qualsiasi aspetto trattato. <span class="font-medium text-blue-600">Grazie mille per la vostra attenzione e per la partecipazione!</span>"</p>
+                <div class="mt-6 text-center">
+                    <img src="https://placehold.co/600x300/c5e1a5/558b2f?text=Domande+e+Grazie" alt="Infografica: Spazio per Domande e Ringraziamenti" class="rounded-lg shadow-md mx-auto">
+                </div>
+            </section>
+
+            <!-- Quiz Section -->
+            <section id="quiz" class="bg-white p-8 rounded-lg shadow-md mb-8 section-content">
+                <h2 class="text-3xl font-semibold text-blue-800 mb-6">Quiz sui Reati contro la Pubblica Amministrazione</h2>
+                <div id="quizContainer">
+                    <!-- Quiz questions will be dynamically loaded here -->
+                </div>
+                <div class="flex justify-between mt-8">
+                    <button id="prevQuestionBtn" class="bg-gray-300 text-gray-800 px-6 py-3 rounded-md shadow-md hover:bg-gray-400 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">Precedente</button>
+                    <button id="nextQuestionBtn" class="bg-blue-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-blue-700 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">Successiva</button>
+                </div>
+                <div class="flex justify-center mt-4">
+                    <button id="endQuizBtn" class="bg-red-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-red-700 transition duration-300">Termina Quiz</button>
+                </div>
+                <div id="quizResults" class="mt-8 p-6 bg-gray-100 rounded-lg hidden">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Risultati del Quiz</h3>
+                    <p class="text-lg mb-4">Punteggio: <span id="scoreDisplay" class="font-bold text-blue-600">0</span> / <span id="totalQuestionsDisplay" class="font-bold text-blue-600">0</span></p>
+                    <div class="flex justify-center space-x-4 mt-4">
+                        <button id="reviewQuizBtn" class="bg-green-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-green-700 transition duration-300">Rivedi Risposte</button>
+                        <button id="restartQuizBtn" class="bg-blue-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-blue-700 transition duration-300">Ricomincia il Quiz</button>
+                    </div>
+                    <div id="reviewArea" class="mt-6 hidden">
+                        <h4 class="text-xl font-semibold mb-4">Revisione delle Risposte</h4>
+                        <!-- Review details will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // Get references to elements
+        const sidebar = document.getElementById('sidebar');
+        const mainContentWrapper = document.getElementById('mainContentWrapper');
+        const sidebarToggleOpen = document.getElementById('sidebarToggleOpen');
+        const sidebarToggleClose = document.getElementById('sidebarToggleClose');
+
+        // Function to open the sidebar
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-0');
+        }
+
+        // Function to close the sidebar
+        function closeSidebar() {
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+        }
+
+        // Event listeners for sidebar toggles
+        sidebarToggleOpen.addEventListener('click', openSidebar);
+        sidebarToggleClose.addEventListener('click', closeSidebar);
+
+        // Close sidebar when a navigation link is clicked (for mobile)
+        document.querySelectorAll('#sidebar a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Smooth scroll logic
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Close sidebar on mobile after click
+                if (window.innerWidth < 768) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        // Intersection Observer for section animations
+        const sections = document.querySelectorAll('.section-content');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    entry.target.classList.remove('active'); // Optional: remove active when out of view
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Chart.js data and rendering
+        document.addEventListener('DOMContentLoaded', () => {
+            // Chart for Slide 4: Importanza dei beni giuridici tutelati
+            const beniGiuridiciCtx = document.getElementById('beniGiuridiciChart');
+            if (beniGiuridiciCtx) {
+                new Chart(beniGiuridiciCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Imparzialità', 'Buon Andamento', 'Prestigio', 'Efficienza', 'Trasparenza', 'Correttezza'],
+                        datasets: [{
+                            data: [20, 20, 15, 15, 15, 15],
+                            backgroundColor: [
+                                '#6366f1', '#8b5cf6', '#a78bfa', '#c4b5fd', '#e0e7ff', '#f0f2f5'
+                            ],
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Beni Giuridici Tutelati dalla P.A.',
+                                font: { size: 18, family: 'Inter' }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed !== null) {
+                                            label += context.parsed + '%';
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Chart for Slide 5: Tipi di reati contro la P.A.
+            const classificazioneReatiCtx = document.getElementById('classificazioneReatiChart');
+            if (classificazioneReatiCtx) {
+                new Chart(classificazioneReatiCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Reati da P.U./IPS', 'Reati da Privati'],
+                        datasets: [{
+                            label: 'Frequenza Concettuale',
+                            data: [70, 30],
+                            backgroundColor: [
+                                '#3b82f6', '#ef4444'
+                            ],
+                            borderColor: [
+                                '#2563eb', '#dc2626'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Classificazione Concettuale dei Reati contro la P.A.',
+                                font: { size: 18, family: 'Inter' }
+                            },
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                title: {
+                                    display: true,
+                                    text: 'Percentuale (%)'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+
+        // Quiz Logic
+        const quizQuestions = [
+            {
+                question: "Qual è il principio fondamentale del Diritto Penale sancito dall'Articolo 25 della Costituzione e dall'Articolo 1 del Codice Penale?",
+                options: [
+                    "Principio di colpevolezza",
+                    "Principio di legalità",
+                    "Principio di offensività",
+                    "Principio di materialità"
+                ],
+                correctAnswer: "Principio di legalità"
+            },
+            {
+                question: "Secondo l'Articolo 97 della Costituzione, quali sono i principi fondamentali che delineano l'azione della Pubblica Amministrazione?",
+                options: [
+                    "Efficienza e velocità",
+                    "Imparzialità e buon andamento",
+                    "Economicità e produttività",
+                    "Trasparenza e segretezza"
+                ],
+                correctAnswer: "Imparzialità e buon andamento"
+            },
+            {
+                question: "Quale tra i seguenti beni giuridici è primariamente tutelato dalla disciplina penale contro la corruzione?",
+                options: [
+                    "Il patrimonio privato",
+                    "L'immagine del funzionario",
+                    "L'imparzialità e il buon andamento della P.A.",
+                    "La libertà di mercato"
+                ],
+                correctAnswer: "L'imparzialità e il buon andamento della P.A."
+            },
+            {
+                question: "Quale è la differenza cruciale tra Pubblico Ufficiale e Incaricato di Pubblico Servizio ai fini penali?",
+                options: [
+                    "Il Pubblico Ufficiale lavora per lo Stato, l'Incaricato no.",
+                    "L'Incaricato di Pubblico Servizio ha poteri autoritativi, il Pubblico Ufficiale no.",
+                    "Il Pubblico Ufficiale esercita poteri autoritativi o certificativi, l'Incaricato no.",
+                    "Non c'è differenza, sono sinonimi."
+                ],
+                correctAnswer: "Il Pubblico Ufficiale esercita poteri autoritativi o certificativi, l'Incaricato no."
+            },
+            {
+                question: "Un avvocato, un medico privato o un farmacista rientrano nella categoria di:",
+                options: [
+                    "Pubblico Ufficiale",
+                    "Incaricato di Pubblico Servizio",
+                    "Esercente un Servizio di Pubblica Necessità",
+                    "Privato cittadino senza rilevanza penale"
+                ],
+                correctAnswer: "Esercente un Servizio di Pubblica Necessità"
+            },
+            {
+                question: "Cosa si intende per 'reato proprio' nel contesto dei reati contro la P.A.?",
+                options: [
+                    "Un reato che può essere commesso solo da privati.",
+                    "Un reato che può essere commesso da chiunque.",
+                    "Un reato che può essere commesso solo da persone che rivestono una specifica qualifica (es. P.U./IPS).",
+                    "Un reato che non prevede concorso di persone."
+                ],
+                correctAnswer: "Un reato che può essere commesso solo da persone che rivestono una specifica qualifica (es. P.U./IPS)."
+            },
+            {
+                question: "Nella Corruzione Propria (Art. 319 c.p.), l'atto che il pubblico funzionario si impegna a compiere è:",
+                options: [
+                    "Conforme ai suoi doveri d'ufficio",
+                    "Contrario ai suoi doveri d'ufficio",
+                    "Indifferente ai suoi doveri d'ufficio",
+                    "Un atto di ordinaria amministrazione"
+                ],
+                correctAnswer: "Contrario ai suoi doveri d'ufficio"
+            },
+            {
+                question: "Qual è la differenza fondamentale tra Corruzione Propria e Corruzione Impropria?",
+                options: [
+                    "La pena prevista",
+                    "Il soggetto attivo che commette il reato",
+                    "Il tipo di atto che il pubblico funzionario si impegna a compiere (contrario vs conforme ai doveri)",
+                    "La presenza o meno di denaro nello scambio"
+                ],
+                correctAnswer: "Il tipo di atto che il pubblico funzionario si impegna a compiere (contrario vs conforme ai doveri)"
+            },
+            {
+                question: "La Corruzione in Atti Giudiziari (Art. 319 ter c.p.) è considerata più grave perché:",
+                options: [
+                    "Coinvolge sempre somme di denaro elevate",
+                    "Mina direttamente la fiducia nel sistema giudiziario",
+                    "È commessa solo da giudici",
+                    "Non prevede la confisca del profitto"
+                ],
+                correctAnswer: "Mina direttamente la fiducia nel sistema giudiziario"
+            },
+            {
+                question: "Nella Concussione (Art. 317 c.p.), il privato che dà o promette denaro/utilità è considerato:",
+                options: [
+                    "Il corruttore",
+                    "Il complice",
+                    "La vittima (soggetto passivo)",
+                    "Un soggetto indifferente"
+                ],
+                correctAnswer: "La vittima (soggetto passivo)"
+            },
+            {
+                question: "Il reato di Induzione Indebita a Dare o Promettere Utilità (Art. 319 quater c.p.) è stato introdotto con quale legge?",
+                options: [
+                    "Legge Bassanini",
+                    "Legge Severino (2012)",
+                    "Legge Anticorruzione (2018)",
+                    "Legge Mancino"
+                ],
+                correctAnswer: "Legge Severino (2012)"
+            },
+            {
+                question: "Il Peculato (Art. 314 c.p.) si configura quando il Pubblico Ufficiale si appropria di denaro o cose mobili di cui ha disponibilità per:",
+                options: [
+                    "Motivi personali",
+                    "Ragioni d'ufficio o servizio",
+                    "Errore contabile",
+                    "Necessità urgenti"
+                ],
+                correctAnswer: "Ragioni d'ufficio o servizio"
+            },
+            {
+                question: "La Malversazione a Danno dello Stato (Art. 316 bis c.p.) si distingue dal peculato perché:",
+                options: [
+                    "Riguarda solo i Pubblici Ufficiali",
+                    "Prevede un'appropriazione, non una distrazione",
+                    "Prevede una 'distrazione' di fondi per fini diversi da quelli erogati, non un'appropriazione",
+                    "È commessa solo da privati"
+                ],
+                correctAnswer: "Prevede una 'distrazione' di fondi per fini diversi da quelli erogati, non un'appropriazione"
+            },
+            {
+                question: "Qual è l'elemento distintivo del reato di Indebita Percezione di Erogazioni (Art. 316 ter c.p.) rispetto alla truffa aggravata?",
+                options: [
+                    "La pena più severa",
+                    "Non richiede artifici o raggiri, basta la presentazione di documenti falsi o omissioni",
+                    "Riguarda solo finanziamenti europei",
+                    "Può essere commesso solo da Pubblici Ufficiali"
+                ],
+                correctAnswer: "Non richiede artifici o raggiri, basta la presentazione di documenti falsi o omissioni"
+            },
+            {
+                question: "L'Abuso d'Ufficio (Art. 323 c.p.) richiede, oltre all'abuso di poteri, la violazione di:",
+                options: [
+                    "Norme etiche",
+                    "Principi morali",
+                    "Specifiche norme di legge o di regolamento",
+                    "Consuetudini amministrative"
+                ],
+                correctAnswer: "Specifiche norme di legge o di regolamento"
+            },
+            {
+                question: "Il reato di Rivelazione di Segreti d'Ufficio (Art. 326 c.p.) tutela principalmente:",
+                options: [
+                    "La libertà di stampa",
+                    "La privacy dei cittadini",
+                    "La riservatezza e la segretezza delle informazioni della P.A.",
+                    "Il diritto di accesso agli atti"
+                ],
+                correctAnswer: "La riservatezza e la segretezza delle informazioni della P.A."
+            },
+            {
+                question: "L'Omissione o Ritardo di Atti d'Ufficio (Art. 328 c.p.) si applica a un atto che il P.U./IPS avrebbe dovuto compiere:",
+                options: [
+                    "A sua discrezione",
+                    "Senza ritardo e che sia doveroso",
+                    "Solo su richiesta formale del cittadino",
+                    "Solo se non ci sono altre priorità"
+                ],
+                correctAnswer: "Senza ritardo e che sia doveroso"
+            },
+            {
+                question: "Il Rifiuto di Atti d'Ufficio (Art. 328 c.p., comma 2) riguarda atti urgenti per ragioni di:",
+                options: [
+                    "Economia o finanza",
+                    "Giustizia, sicurezza pubblica, igiene o sanità",
+                    "Politica o strategia",
+                    "Comodità del funzionario"
+                ],
+                correctAnswer: "Giustizia, sicurezza pubblica, igiene o sanità"
+            },
+            {
+                question: "Il reato di Interruzione di un Servizio Pubblico o di Pubblica Necessità (Art. 330 c.p.) può essere commesso da:",
+                options: [
+                    "Solo Pubblici Ufficiali",
+                    "Solo Incaricati di Pubblico Servizio",
+                    "Chiunque (anche privati cittadini)",
+                    "Solo gruppi organizzati"
+                ],
+                correctAnswer: "Chiunque (anche privati cittadini)"
+            },
+            {
+                question: "Il reato di Soppressione, Distruzione o Occultamento di Atti Veri (Art. 490 c.p.) tutela principalmente:",
+                options: [
+                    "La proprietà privata",
+                    "La fede pubblica e la regolarità delle prove documentali",
+                    "La libertà di espressione",
+                    "Il diritto all'oblio"
+                ],
+                correctAnswer: "La fede pubblica e la regolarità delle prove documentali"
+            },
+            {
+                question: "Nel Falso Ideologico Commesso da Pubblico Ufficiale in Atti Pubblici (Art. 479 c.p.), la falsità risiede:",
+                options: [
+                    "Nella forma fisica del documento",
+                    "Nel contenuto ideologico del documento",
+                    "Nella data di redazione del documento",
+                    "Nella firma del documento"
+                ],
+                correctAnswer: "Nel contenuto ideologico del documento"
+            },
+            {
+                question: "La Falsità Materiale del Pubblico Ufficiale in Atti Pubblici (Art. 476 c.p.) sanziona:",
+                options: [
+                    "L'attestazione di fatti non veri",
+                    "L'alterazione fisica di un documento pubblico",
+                    "L'omissione di informazioni",
+                    "La distruzione di un documento privato"
+                ],
+                correctAnswer: "L'alterazione fisica di un documento pubblico"
+            },
+            {
+                question: "Il reato di Falsità in Scrittura Privata (Art. 485 c.p.) è rilevante per la P.A. quando:",
+                options: [
+                    "La scrittura privata è usata solo tra privati",
+                    "La scrittura privata è usata in un contesto pubblico per ingannare l'amministrazione",
+                    "La scrittura privata non ha valore legale",
+                    "Il reato è commesso da un Pubblico Ufficiale"
+                ],
+                correctAnswer: "La scrittura privata è usata in un contesto pubblico per ingannare l'amministrazione"
+            },
+            {
+                question: "Il reato di Uso di Atto Falso (Art. 489 c.p.) punisce chi:",
+                options: [
+                    "Ha falsificato materialmente il documento",
+                    "Ha attestato il falso nel documento",
+                    "Utilizza un atto falso sapendo che è tale, senza averlo falsificato",
+                    "Non è a conoscenza della falsità dell'atto"
+                ],
+                correctAnswer: "Utilizza un atto falso sapendo che è tale, senza averlo falsificato"
+            },
+            {
+                question: "Quale bene giuridico è protetto dai reati di falso in generale?",
+                options: [
+                    "Il patrimonio dello Stato",
+                    "La libertà individuale",
+                    "La fede pubblica (fiducia nell'autenticità e veridicità degli atti)",
+                    "L'ordine pubblico"
+                ],
+                correctAnswer: "La fede pubblica (fiducia nell'autenticità e veridicità degli atti)"
+            },
+            {
+                question: "La Truffa Aggravata per il conseguimento di erogazioni pubbliche (Art. 640 bis c.p.) richiede, a differenza dell'indebita percezione:",
+                options: [
+                    "La presenza di un Pubblico Ufficiale",
+                    "Un danno economico minimo",
+                    "Una condotta più complessa di 'artifici o raggiri'",
+                    "Solo l'omissione di informazioni dovute"
+                ],
+                correctAnswer: "Una condotta più complessa di 'artifici o raggiri'"
+            },
+            {
+                question: "La Resistenza a Pubblico Ufficiale (Art. 337 c.p.) si configura quando il privato si oppone con violenza/minaccia a un atto del P.U. che deve essere:",
+                options: [
+                    "Contrario alla legge",
+                    "Discrezionale",
+                    "Legittimo",
+                    "Non urgente"
+                ],
+                correctAnswer: "Legittimo"
+            },
+            {
+                question: "L'Oltraggio a Pubblico Ufficiale (Art. 341 bis c.p.) richiede che l'offesa avvenga:",
+                options: [
+                    "In privato",
+                    "In luogo pubblico o aperto al pubblico, e in presenza di più persone",
+                    "Solo tramite scritti",
+                    "Senza testimoni"
+                ],
+                correctAnswer: "In luogo pubblico o aperto al pubblico, e in presenza di più persone"
+            },
+            {
+                question: "La Violenza o Minaccia a Pubblico Ufficiale (Art. 336 c.p.) ha lo scopo specifico di:",
+                options: [
+                    "Opporsi a un atto in corso",
+                    "Costringere il P.U. a compiere o omettere un atto d'ufficio",
+                    "Offendere l'onore del P.U.",
+                    "Ritardare un procedimento"
+                ],
+                correctAnswer: "Costringere il P.U. a compiere o omettere un atto d'ufficio"
+            },
+            {
+                question: "Il reato di Millantato Credito (Art. 346 c.p.) è stato abrogato e sostituito da:",
+                options: [
+                    "Concussione",
+                    "Corruzione",
+                    "Traffico di Influenze Illecite (Art. 346 bis c.p.)",
+                    "Abuso d'Ufficio"
+                ],
+                correctAnswer: "Traffico di Influenze Illecite (Art. 346 bis c.p.)"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(quizQuestions.length).fill(null);
+        let score = 0;
+        let quizEnded = false;
+
+        const quizContainer = document.getElementById('quizContainer');
+        const prevQuestionBtn = document.getElementById('prevQuestionBtn');
+        const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+        const endQuizBtn = document.getElementById('endQuizBtn');
+        const quizResults = document.getElementById('quizResults');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const totalQuestionsDisplay = document.getElementById('totalQuestionsDisplay');
+        const reviewQuizBtn = document.getElementById('reviewQuizBtn');
+        const restartQuizBtn = document.getElementById('restartQuizBtn'); // New button
+        const reviewArea = document.getElementById('reviewArea');
+
+        function loadQuestion() {
+            if (currentQuestionIndex >= quizQuestions.length) {
+                showResults();
+                return;
+            }
+
+            const q = quizQuestions[currentQuestionIndex];
+            quizContainer.innerHTML = `
+                <div class="mb-6 p-6 border border-gray-200 rounded-lg shadow-sm bg-blue-50">
+                    <p class="text-lg font-medium text-gray-800 mb-4">Domanda ${currentQuestionIndex + 1}/${quizQuestions.length}:</p>
+                    <p class="text-xl font-semibold text-blue-700 mb-6">${q.question}</p>
+                    <div class="space-y-4" id="optionsContainer">
+                        ${q.options.map((option, i) => `
+                            <div class="quiz-option p-4 border border-gray-300 rounded-md cursor-pointer transition duration-200 ease-in-out hover:shadow-md ${quizEnded ? 'disabled' : ''}" data-index="${i}">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            const options = quizContainer.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.addEventListener('click', selectOption);
+            });
+
+            // Restore selected answer if exists
+            if (userAnswers[currentQuestionIndex] !== null) {
+                options[userAnswers[currentQuestionIndex]].classList.add('selected');
+            }
+
+            // If quiz ended, disable options and show correct/incorrect
+            if (quizEnded) {
+                options.forEach((option, i) => {
+                    option.classList.add('disabled');
+                    if (q.options[i] === q.correctAnswer) {
+                        option.classList.add('correct');
+                    } else if (userAnswers[currentQuestionIndex] === i) {
+                        option.classList.add('incorrect');
+                    }
+                });
+            }
+
+            updateNavigationButtons();
+        }
+
+        function selectOption(event) {
+            if (quizEnded) return; // Prevent selection after quiz ends
+
+            const selectedOption = event.currentTarget;
+            const optionsContainer = selectedOption.closest('#optionsContainer');
+            
+            // Remove 'selected' from all options in this question
+            optionsContainer.querySelectorAll('.quiz-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+
+            // Add 'selected' to the clicked option
+            selectedOption.classList.add('selected');
+            userAnswers[currentQuestionIndex] = parseInt(selectedOption.dataset.index);
+        }
+
+        function updateNavigationButtons() {
+            prevQuestionBtn.disabled = currentQuestionIndex === 0;
+            nextQuestionBtn.disabled = currentQuestionIndex === quizQuestions.length - 1;
+            endQuizBtn.textContent = currentQuestionIndex === quizQuestions.length - 1 ? 'Termina Quiz' : 'Termina Quiz';
+        }
+
+        function showResults() {
+            quizEnded = true;
+            score = 0;
+            userAnswers.forEach((answerIndex, i) => {
+                if (answerIndex !== null && quizQuestions[i].options[answerIndex] === quizQuestions[i].correctAnswer) {
+                    score++;
+                }
+            });
+
+            quizContainer.innerHTML = ''; // Clear quiz questions
+            prevQuestionBtn.style.display = 'none';
+            nextQuestionBtn.style.display = 'none';
+            endQuizBtn.style.display = 'none';
+
+            quizResults.classList.remove('hidden');
+            scoreDisplay.textContent = score;
+            totalQuestionsDisplay.textContent = quizQuestions.length;
+            reviewArea.classList.add('hidden'); // Hide review area initially
+            restartQuizBtn.style.display = 'inline-block'; // Ensure restart button is visible
+        }
+
+        function reviewAnswers() {
+            reviewArea.classList.remove('hidden');
+            reviewArea.innerHTML = ''; // Clear previous review
+
+            quizQuestions.forEach((q, i) => {
+                const userAnswerIndex = userAnswers[i];
+                const isCorrect = userAnswerIndex !== null && q.options[userAnswerIndex] === q.correctAnswer;
+                const userAnswerText = userAnswerIndex !== null ? q.options[userAnswerIndex] : 'Non risposto';
+
+                // Hide unanswered questions in review
+                if (userAnswerIndex === null) {
+                    return;
+                }
+
+                const questionReviewDiv = document.createElement('div');
+                questionReviewDiv.classList.add('mb-6', 'p-4', 'rounded-lg', 'shadow-sm', isCorrect ? 'bg-green-50' : 'bg-red-50', 'border', isCorrect ? 'border-green-200' : 'border-red-200');
+                questionReviewDiv.innerHTML = `
+                    <p class="font-semibold text-lg mb-2">Domanda ${i + 1}: ${q.question}</p>
+                    <p class="mb-1">La tua risposta: <span class="${isCorrect ? 'text-green-700' : 'text-red-700'} font-medium">${userAnswerText}</span></p>
+                    <p>Risposta corretta: <span class="text-green-700 font-medium">${q.correctAnswer}</span></p>
+                `;
+                reviewArea.appendChild(questionReviewDiv);
+            });
+
+            // Disable all options in the quiz if it's still visible
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.classList.add('disabled');
+            });
+            reviewQuizBtn.disabled = true; // Disable review button after review
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = new Array(quizQuestions.length).fill(null);
+            score = 0;
+            quizEnded = false;
+
+            quizResults.classList.add('hidden');
+            reviewArea.classList.add('hidden');
+            prevQuestionBtn.style.display = 'inline-block';
+            nextQuestionBtn.style.display = 'inline-block';
+            endQuizBtn.style.display = 'inline-block';
+            reviewQuizBtn.disabled = false; // Re-enable review button for next quiz attempt
+
+            loadQuestion();
+            // Scroll to the quiz section
+            document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        prevQuestionBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        });
+
+        nextQuestionBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < quizQuestions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        });
+
+        endQuizBtn.addEventListener('click', () => {
+            showResults();
+        });
+
+        reviewQuizBtn.addEventListener('click', reviewAnswers);
+        restartQuizBtn.addEventListener('click', restartQuiz); // Attach event listener
+
+        // Initial load
+        loadQuestion();
+    </script>
+</body>
+</html>
